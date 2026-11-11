@@ -54,4 +54,4 @@ TouchGFX/simulator/msvs/.vs
 # These are not needed in the repository as they can be recreated using requirements.txt.
 venv/
 .venv/
-.metadata/.plugins/org.eclipse.*
+.metadata/
