@@ -1,0 +1,25 @@
+{
+  "datasets_dir": "Datasets",
+  "channel": "ALIM",
+  "normalization": "trace-zscore",
+  "n_files": 10,
+  "n_single_pairs": 5,
+  "best_single_dataset": {
+    "dataset": "Dataset_PICOs",
+    "channel": "ALIM",
+    "n_autoindotto": 107,
+    "n_indotto": 171,
+    "cv_accuracy": 0.9964028776978417,
+    "cv_balanced_accuracy": 0.9953271028037383,
+    "cv_auc": 0.999836038694868,
+    "pca_fisher_ratio": 0.1983463457837837,
+    "pca_var_1": 0.4371272921562195,
+    "pca_var_2": 0.22907395660877228
+  },
+  "merge_unseen_mean_balanced_accuracy_by_step": {
+    "1": 0.6470010165138924,
+    "2": 0.6793476797926009,
+    "3": 0.5936155794129186,
+    "4": 0.503780718336484
+  }
+}

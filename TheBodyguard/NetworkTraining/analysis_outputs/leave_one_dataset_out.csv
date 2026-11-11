@@ -1,0 +1,46 @@
+held_out_dataset,train_datasets,accuracy,balanced_accuracy,auc,report
+Dataset_7Nani__ALIM,Dataset_GPIOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,0.5042492917847026,0.503780718336484,0.7488033669793488,"              precision    recall  f1-score   support
+
+ autoindotto       1.00      0.01      0.02       529
+     indotto       0.50      1.00      0.67       530
+
+    accuracy                           0.50      1059
+   macro avg       0.75      0.50      0.34      1059
+weighted avg       0.75      0.50      0.34      1059
+"
+Dataset_GPIOs__ALIM,Dataset_7Nani__ALIM + Dataset_GoldenBoys__ALIM + Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,0.5040650406504065,0.5150081862834273,0.5501678601551259,"              precision    recall  f1-score   support
+
+ autoindotto       0.49      0.90      0.64       239
+     indotto       0.58      0.13      0.21       253
+
+    accuracy                           0.50       492
+   macro avg       0.54      0.52      0.43       492
+weighted avg       0.54      0.50      0.42       492
+"
+Dataset_GoldenBoys__ALIM,Dataset_7Nani__ALIM + Dataset_GPIOs__ALIM + Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,0.5433333333333333,0.5433333333333333,0.5297222222222222,"              precision    recall  f1-score   support
+
+ autoindotto       0.84      0.11      0.19       300
+     indotto       0.52      0.98      0.68       300
+
+    accuracy                           0.54       600
+   macro avg       0.68      0.54      0.44       600
+weighted avg       0.68      0.54      0.44       600
+"
+Dataset_HDMI__ALIM,Dataset_7Nani__ALIM + Dataset_GPIOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_PICOs__ALIM,0.7010309278350515,0.7040425531914893,0.7901654846335697,"              precision    recall  f1-score   support
+
+ autoindotto       0.66      0.80      0.72       141
+     indotto       0.76      0.61      0.68       150
+
+    accuracy                           0.70       291
+   macro avg       0.71      0.70      0.70       291
+weighted avg       0.71      0.70      0.70       291
+"
+Dataset_PICOs__ALIM,Dataset_7Nani__ALIM + Dataset_GPIOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_HDMI__ALIM,0.564748201438849,0.6147182598240148,0.641361971907963,"              precision    recall  f1-score   support
+
+ autoindotto       0.46      0.83      0.60       107
+     indotto       0.79      0.40      0.53       171
+
+    accuracy                           0.56       278
+   macro avg       0.63      0.61      0.56       278
+weighted avg       0.66      0.56      0.55       278
+"

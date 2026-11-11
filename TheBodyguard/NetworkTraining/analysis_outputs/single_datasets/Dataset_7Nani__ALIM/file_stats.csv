@@ -1,0 +1,3 @@
+dataset,channel,label,file,n_traces,n_points,meta_min,meta_max,signal_mean,signal_std
+Dataset_7Nani,ALIM,indotto,Datasets/Dataset_7Nani/ALIM_ATTACCO_finale.csv,530,6000,2148.0,4651.0,8.87984725750357e-08,0.9999992251396179
+Dataset_7Nani,ALIM,autoindotto,Datasets/Dataset_7Nani/ALIM_AUTOINDOTTO_finale.csv,529,6000,2160.0,7307.0,8.714912524965257e-08,0.9999994039535522

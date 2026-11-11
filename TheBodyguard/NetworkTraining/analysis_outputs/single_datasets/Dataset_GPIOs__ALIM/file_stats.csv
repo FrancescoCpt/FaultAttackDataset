@@ -1,0 +1,3 @@
+dataset,channel,label,file,n_traces,n_points,meta_min,meta_max,signal_mean,signal_std
+Dataset_GPIOs,ALIM,autoindotto,Datasets/Dataset_GPIOs/dataset_ALIM_VITT_AUTINDOTTO_perfect.csv,239,6000,3887.0,7406.0,-1.310191493075763e-07,1.0000014305114746
+Dataset_GPIOs,ALIM,indotto,Datasets/Dataset_GPIOs/dataset_ALIM_VITT_INDOTTO_perfect.csv,253,6000,3435.0,4732.0,-4.772643791284281e-08,1.0000003576278687

@@ -1,0 +1,77 @@
+ST Edge AI Core v2.2.0-20266 2adc00962
+Created date          : 2026-06-23 14:42:58
+Parameters            : generate --target stm32n6 --name network -m ../training_outputs/final_model_int8.tflite --st-neural-art n6-noextmem-noec-o1@user_neuralart_noec_o1.json --workspace st_ai_ws_noec_o1 --output st_ai_output_noec_o1
+
+Model name - final_model_int8
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+m_id   layer (original)            oshape                 param/size           macc             connected to
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+0      serving_default_trace0 ()   [b:1,h:1,w:3199,c:1]
+       conv2d_0 (CONV_2D)          [b:1,h:1,w:1600,c:8]   80/104            115,208   serving_default_trace0
+       nl_0_nl (CONV_2D)           [b:1,h:1,w:1600,c:8]                      12,800                 conv2d_0
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+1      conv2d_1 (CONV_2D)          [b:1,h:1,w:800,c:16]   912/960           716,816                  nl_0_nl
+       nl_1_nl (CONV_2D)           [b:1,h:1,w:800,c:16]                      12,800                 conv2d_1
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+2      conv2d_2 (CONV_2D)          [b:1,h:1,w:400,c:24]   1,944/2,016       768,024                  nl_1_nl
+       nl_2_nl (CONV_2D)           [b:1,h:1,w:400,c:24]                       9,600                 conv2d_2
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+3      conv2d_3 (CONV_2D)          [b:1,h:1,w:200,c:32]   2,336/2,432       460,832                  nl_2_nl
+       nl_3_nl (CONV_2D)           [b:1,h:1,w:200,c:32]                       6,400                 conv2d_3
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+4      conv2d_4 (CONV_2D)          [b:1,h:1,w:1,c:2]      12,802/12,808      12,802                  nl_3_nl
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+8      reshape_8 (RESHAPE)         [b:1,c:2]                                                        conv2d_4
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+9      nl_9 (SOFTMAX)              [b:1,c:2]                                     30                reshape_8
+------ --------------------------- ---------------------- --------------- --------- ------------------------
+model: macc=2,115,312 weights=18,320 activations=-- io=--
+
+
+
+
+
+Compilation details
+------------------------------------------------------------------------------------
+Compiler version: 1.1.1-14
+Compiler arguments:  -i /Users/francescocaputo/STM32CubeIDE/SecurityBreach/TheBodyguard/NetworkTraining/aton_conversion/st_ai_output_noec_o1/final_model_int8_OE_3_3_0.onnx --json-quant-file /Users/francescocaputo/STM32CubeIDE/SecurityBreach/TheBodyguard/NetworkTraining/aton_conversion/st_ai_output_noec_o1/final_model_int8_OE_3_3_0_Q.json -g network.c --load-mdesc /Users/francescocaputo/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/Utilities/configs/stm32n6.mdesc --load-mpool /Users/francescocaputo/STM32CubeIDE/SecurityBreach/TheBodyguard/NetworkTraining/aton_conversion/my_mpools/stm32n6__noextmem.mpool --save-mpool-file /Users/francescocaputo/STM32CubeIDE/SecurityBreach/TheBodyguard/NetworkTraining/aton_conversion/st_ai_ws_noec_o1/neural_art__network/stm32n6__noextmem.mpool --out-dir-prefix /Users/francescocaputo/STM32CubeIDE/SecurityBreach/TheBodyguard/NetworkTraining/aton_conversion/st_ai_ws_noec_o1/neural_art__network/ --Os --optimization 1 --all-buffers-info --mvei --cache-maintenance --native-float --enable-virtual-mem-pools --Omax-ca-pipe 1 --output-info-file c_info.json
+====================================================================================
+
+Memory usage information  (input/output buffers are included in activations)
+------------------------------------------------------------------------------------
+	flexMEM    [0x34000000 - 0x34000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM1    [0x34064000 - 0x34064000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM2    [0x34100000 - 0x34200000]:          0  B /      1.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM3    [0x34200000 - 0x34270000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM4    [0x34270000 - 0x342E0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM5    [0x342E0000 - 0x34350000]:     96.438 kB /    448.000 kB  ( 21.53 % used) -- weights:     55.813 kB ( 12.46 % used)  activations:     40.625 kB (  9.07 % used)
+	npuRAM6    [0x34350000 - 0x343C0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	octoFlash  [0x71000000 - 0x71000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	hyperRAM   [0x90000000 - 0x90000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+---
+Total:                                            96.438 kB                                  -- weights:     55.813 kB                  activations:     40.625 kB
+====================================================================================
+
+
+Used memory ranges
+------------------------------------------------------------------------------------
+	npuRAM5    [0x342E0000 - 0x34350000]: 0x342E0000-0x342F81D0
+====================================================================================
+
+Epochs details
+------------------------------------------------------------------------------------
+Total number of epochs: 11 of which 5 implemented in software
+---
+epoch ID   HW/SW/EC Operation (SW only)
+epoch 1       HW
+epoch 2      -SW-   (        Conv        )
+epoch 3       HW
+epoch 4       HW
+epoch 5       HW
+epoch 6       HW
+epoch 7      -SW-   (  DequantizeLinear  )
+epoch 8      -SW-   (        Conv        )
+epoch 9      -SW-   (        Cast        )
+epoch 10      HW
+epoch 11     -SW-   (      Softmax       )
+====================================================================================

@@ -1,0 +1,3 @@
+dataset,channel,label,file,n_traces,n_points,meta_min,meta_max,signal_mean,signal_std
+Dataset_GoldenBoys,ALIM,autoindotto,Datasets/Dataset_GoldenBoys/300dataset_Alim_VITTIMA_AUTOINDOTT0.csv,300,6000,1.0,300.0,1.3936360510058421e-08,0.9999995231628418
+Dataset_GoldenBoys,ALIM,indotto,Datasets/Dataset_GoldenBoys/dataset 300 _INDOTTO_FINAL.csv,300,6000,1498.0,2205.0,-3.350151800418644e-08,1.000003457069397

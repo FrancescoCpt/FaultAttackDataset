@@ -1,0 +1,16 @@
+{
+  "chosen_config": "aligned_crop_trace_zscore",
+  "reason": "Massima balanced accuracy media in leave-one-dataset-out tra le elaborazioni provate.",
+  "parameters": {
+    "datasets_dir": "Datasets",
+    "output_dir": "elaboration_outputs_smoke",
+    "channel": "ALIM",
+    "baseline_samples": 300,
+    "event_smooth": 31,
+    "crop_pre": 600,
+    "crop_post": 2600,
+    "pca_components": 40,
+    "max_samples_per_class": 80,
+    "random_state": 42
+  }
+}

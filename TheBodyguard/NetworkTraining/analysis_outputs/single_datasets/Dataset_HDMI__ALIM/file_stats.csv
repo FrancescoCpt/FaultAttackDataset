@@ -1,0 +1,3 @@
+dataset,channel,label,file,n_traces,n_points,meta_min,meta_max,signal_mean,signal_std
+Dataset_HDMI,ALIM,autoindotto,Datasets/Dataset_HDMI/DST_ALIM_AUTOINDOTTO.csv,141,6000,4135.0,7648.0,-3.45396955481192e-08,0.999998152256012
+Dataset_HDMI,ALIM,indotto,Datasets/Dataset_HDMI/DST_ALIM_INDOTTO.csv,150,6000,3845.0,5188.0,5.7101779304957745e-08,1.0000004768371582
