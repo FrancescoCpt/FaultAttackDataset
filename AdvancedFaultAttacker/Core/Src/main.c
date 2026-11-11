@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2025 STMicroelectronics.
+  * Copyright (c) 2026 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -21,34 +21,29 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "string.h"
-#include "stdlib.h"
 #include <stdio.h>
+
+/****FUNZIONAMENTO***
+ * Il firmware riceve il comando 'A' tramite uart, arma TIM1 in One Pulse Mode:
+ * il timer resta in attesa di un trigger esterno su TIM1_CH2/TI2FP2 (PA9/D8). Al
+ * trigger, viene generato un impulso PWM di attacco su TIM1_CH1 (PA8 / D7) con
+ * TON = 1us e ritardo casuale impostato tramite CCR1.
+ * Il valore di CCR1 è generato in modo randomico, salvato e
+ * inviato al PC con il comando 'I'. Dopo l'invio viene preparato il CCR1
+ * per l'attacco successivo.
+ *
+ */
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-typedef enum {
-	IDLE	= 0x01,
-	ARMED	= 0x02,
-	ATTACK	= 0x03
-} AttackerState;
-
-typedef enum {
-	GLITCH_COUNT	= 'C',
-	GLITCH_LATENCY	= 'L',
-	GLITCH_PERIOD 	= 'P',
-	GLITCH_WIDTH	= 'W',
-	RESET_STATE		= 'R',
-	ARMED_SWITCH	= 'A'
-} RXProtocolCMD;
-
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define UART_BUFFER_SIZE 	50
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,44 +52,212 @@ typedef enum {
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim1;
 
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-AttackerState a_state 	= IDLE;		// Stato
+static uint8_t rxByte;
 
-uint8_t rxByte;         			// Singolo byte ricevuto
-char rxBuffer[UART_BUFFER_SIZE]; 	// Buffer per il messaggio ricevuto
-uint8_t rxIndex = 0;    			// Indice del buffer
+static volatile uint8_t system_armed = 0;
 
-int glitch_count = 1;
-int glitch_period = 200;
-int glitch_width = 10;
-int glitch_latency = 0;
+static volatile uint32_t last_pwm_ccr1 = 0;
+static volatile uint8_t last_pwm_valid = 0;
 
-int wait_latency_end = 0;
-int wait_glitch_end = 0;
-int trigger_event = 0;
+static volatile uint32_t armed_ccr1 = 0;
 
+static uint32_t next_ccr1 = 5687U;
+static volatile uint8_t next_ccr1_ready = 0;
 
+static uint32_t rng_state = 0x12345678U;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_TIM1_Init(void);
 static void MX_USART2_UART_Init(void);
-static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
-void processRXData(char* data);
-int getParam(uint8_t index, char* origin_str, char* param);
-void DWT_Init(void);
-void delay_us(uint32_t us);
-void delay_ns(uint32_t ns);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+static void PA8_As_GPIO_Low(void)
+{
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_8;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+}
+
+static void PA8_As_TIM1_CH1(void)
+{
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+
+    GPIO_InitStruct.Pin = GPIO_PIN_8;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF1_TIM1;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+}
+static void Arm_TIM1_OnePulse(void)
+{
+    PA8_As_TIM1_CH1();
+
+    __HAL_TIM_DISABLE(&htim1);
+
+    CLEAR_BIT(htim1.Instance->SMCR, TIM_SMCR_SMS);
+
+    __HAL_TIM_SET_COUNTER(&htim1, 0);
+
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_CC1);
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_CC2);
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_TRIGGER);
+
+    TIM_CCxChannelCmd(htim1.Instance, TIM_CHANNEL_1, TIM_CCx_ENABLE);
+
+    __HAL_TIM_MOE_ENABLE(&htim1);
+
+    __HAL_TIM_ENABLE_IT(&htim1, TIM_IT_UPDATE);
+
+    MODIFY_REG(htim1.Instance->SMCR, TIM_SMCR_SMS, TIM_SLAVEMODE_TRIGGER);
+
+    CLEAR_BIT(htim1.Instance->CR1, TIM_CR1_CEN);
+}
+
+static void Disarm_TIM1_Trigger(void)
+{
+    __HAL_TIM_DISABLE(&htim1);
+
+    CLEAR_BIT(htim1.Instance->SMCR, TIM_SMCR_SMS);
+
+    __HAL_TIM_DISABLE_IT(&htim1, TIM_IT_UPDATE);
+
+    TIM_CCxChannelCmd(htim1.Instance, TIM_CHANNEL_1, TIM_CCx_DISABLE);
+
+    __HAL_TIM_MOE_DISABLE(&htim1);
+
+    __HAL_TIM_SET_COUNTER(&htim1, 0);
+
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_UPDATE);
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_CC1);
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_CC2);
+    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_TRIGGER);
+
+    PA8_As_GPIO_Low();
+
+    system_armed = 0;
+}
+
+static uint32_t TIM1_GetClockHz(void)
+{
+    uint32_t pclk2 = HAL_RCC_GetPCLK2Freq();
+
+    /*
+     * Su STM32F4, se APB2 prescaler è diverso da 1,
+     * il clock dei timer su APB2 è 2 * PCLK2.
+     */
+    if ((RCC->CFGR & RCC_CFGR_PPRE2) == 0U)
+    {
+        return pclk2;
+    }
+    else
+    {
+        return 2U * pclk2;
+    }
+}
+
+static uint32_t RNG_U32(void)
+{
+    rng_state = (1664525U * rng_state) + 1013904223U;
+    return rng_state;
+}
+
+static uint16_t RNG_U16(void)
+{
+    return (uint16_t)(RNG_U32() >> 16);
+}
+
+static int32_t Random_Normal_Ticks(int32_t std_ticks)
+{
+    int32_t sum = 0;
+
+    for (uint8_t i = 0; i < 12; i++)
+    {
+        sum += (int32_t)RNG_U16();
+    }
+
+    int32_t centered = sum - (12 * 32768);
+
+    return (int32_t)(((int64_t)centered * std_ticks) / 65536);
+}
+
+static uint32_t Generate_Random_CCR1(void)
+{
+    uint32_t tim_clk_hz = TIM1_GetClockHz();
+
+    const int32_t mean_ccr_ticks = (int32_t)((tim_clk_hz * 44.058) / 1000000U);
+
+    /*
+     * 3.58 us di deviazione standard.
+     * Con TIM1 = 84 MHz -> 3.58052us = 300.76368 tick.
+     */
+    int32_t std_ccr_ticks = (int32_t)((tim_clk_hz * 3.58052) / 1000000U);
+
+    int32_t ccr = mean_ccr_ticks + Random_Normal_Ticks(std_ccr_ticks);
+
+    uint32_t ton_ticks = tim_clk_hz / 1000000U;   // 1 us
+
+    if (ccr < 1)
+    {
+        ccr = 1;
+    }
+
+    if ((uint32_t)ccr > (0xFFFFU - ton_ticks))
+    {
+        ccr = (int32_t)(0xFFFFU - ton_ticks);
+    }
+
+    return (uint32_t)ccr;
+}
+
+static void TIM1_Config_OnePulse_WithCCR(uint32_t ccr_ticks)
+{
+    uint32_t tim_clk_hz = TIM1_GetClockHz();
+
+    uint32_t ton_ticks = tim_clk_hz / 1000000U;   // TON = 1 us
+
+    uint32_t arr_ticks = ccr_ticks + ton_ticks - 1U;
+
+    __HAL_TIM_DISABLE(&htim1);
+
+    __HAL_TIM_SET_PRESCALER(&htim1, 0);
+    __HAL_TIM_SET_AUTORELOAD(&htim1, arr_ticks);
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, ccr_ticks);
+    __HAL_TIM_SET_COUNTER(&htim1, 0);
+
+    htim1.Instance->EGR = TIM_EGR_UG;
+
+    __HAL_TIM_CLEAR_FLAG(&htim1,
+                         TIM_FLAG_UPDATE |
+                         TIM_FLAG_CC1 |
+                         TIM_FLAG_CC2 |
+                         TIM_FLAG_TRIGGER);
+}
 
 /* USER CODE END 0 */
 
@@ -112,7 +275,8 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+
+	HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -127,15 +291,19 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_TIM1_Init();
   MX_USART2_UART_Init();
-  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  DWT_Init();
-  HAL_UART_Receive_IT(&huart2, &rxByte, 1);
 
-  //__HAL_TIM_MOE_ENABLE(&htim1);
-  //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  //HAL_TIM_OnePulse_Start(&htim2, TIM_CHANNEL_1);
+
+  rng_state ^= HAL_GetTick();
+
+  next_ccr1 = Generate_Random_CCR1();
+  next_ccr1_ready = 1;
+
+  PA8_As_GPIO_Low();
+
+  HAL_UART_Receive_IT(&huart2, &rxByte, 1);
 
 
   /* USER CODE END 2 */
@@ -147,81 +315,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-	  switch(a_state) {
-	  case IDLE:
-		  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-		  HAL_Delay(500);
-		  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-		  HAL_Delay(500);
-		  break;
-
-	  case ARMED:
-		  MX_TIM2_Init();
-
-		  TIM2->CCR1 = glitch_width;
-
-		  //HAL_TIM_OnePulse_Start(&htim1, TIM_CHANNEL_1);
-		  //MX_TIM2_Init();
-		  //MX_TIM1_Init();
-
-		  //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-		  //HAL_TIM_OnePulse_Start(&htim1, TIM_CHANNEL_1);
-		  // Prepara i timer per il treno di glitch
-		  //HAL_TIM_OnePulse_Stop(&htim1, TIM_CHANNEL_1);
-		  //__HAL_TIM_DISABLE(&htim1);
-		  //__HAL_TIM_DISABLE(&htim2);
-
-		  // Set glitch number
-		  //htim1.Instance->RCR = glitch_count-1;
-
-		  // Set glitch period
-		  //__HAL_TIM_SET_AUTORELOAD(&htim1, glitch_period);
-		  //__HAL_TIM_SET_AUTORELOAD(&htim2, glitch_period-1);
-
-		  // Set glitch width
-		  //int real_glitch_width = glitch_period-glitch_width;
-		  //__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, real_glitch_width);
-
-		  // Reset TIM1
-		  //__HAL_TIM_SET_COUNTER(&htim1, 0);
-
-		  // Forzo aggiornamento immediato
-		  //htim1.Instance->EGR = TIM_EGR_UG;
-		  //htim2.Instance->EGR = TIM_EGR_UG;
-
-		  //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
-
-		  // Aspettiamo il trigger
-		  //while (trigger_event == 0) { }
-		  //trigger_event = 0;
-
-		  // Attacco
-		  //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-		  //HAL_TIM_OnePulse_Start(&htim2, TIM_CHANNEL_1);
-
-		  //HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-
-		  // Aspetta 1 s (cuscino di sicurezza) per far terminare i timer
-		  //HAL_Delay(3000);
-		  //HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
-
-		  //char buffer[50];
-		  //snprintf(buffer, sizeof(buffer), "OK: ATTACK ENDED\n");
-		  //HAL_UART_Transmit(&huart2, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
-
-		  if(trigger_event>0) {
-			  //HAL_TIM_OnePulse_Start(&htim2, TIM_CHANNEL_1);
-			  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-			  a_state = ATTACK;
-		  }
-		  break;
-
-	  case ATTACK:
-		  trigger_event = 0;
-		  a_state = IDLE;
-		  break;
-	  }
   }
   /* USER CODE END 3 */
 }
@@ -273,65 +366,90 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief TIM2 Initialization Function
+  * @brief TIM1 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_TIM2_Init(void)
+static void MX_TIM1_Init(void)
 {
 
-  /* USER CODE BEGIN TIM2_Init 0 */
+  /* USER CODE BEGIN TIM1_Init 0 */
 
-  /* USER CODE END TIM2_Init 0 */
+  /* USER CODE END TIM1_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_SlaveConfigTypeDef sSlaveConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
 
-  /* USER CODE BEGIN TIM2_Init 1 */
+  /* USER CODE BEGIN TIM1_Init 1 */
 
-  /* USER CODE END TIM2_Init 1 */
-  htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
-  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = glitch_period;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  /* USER CODE END TIM1_Init 1 */
+  htim1.Instance = TIM1;
+  htim1.Init.Prescaler = 0;
+  htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim1.Init.Period = 84;
+  htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim1.Init.RepetitionCounter = 0;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
   {
     Error_Handler();
   }
   sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  if (HAL_TIM_ConfigClockSource(&htim1, &sClockSourceConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+  if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
   {
     Error_Handler();
   }
-  if (HAL_TIM_OnePulse_Init(&htim2, TIM_OPMODE_SINGLE) != HAL_OK)
+  if (HAL_TIM_OnePulse_Init(&htim1, TIM_OPMODE_SINGLE) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_TRIGGER;
+  sSlaveConfig.InputTrigger = TIM_TS_TI2FP2;
+  sSlaveConfig.TriggerPolarity = TIM_TRIGGERPOLARITY_RISING;
+  sSlaveConfig.TriggerFilter = 0;
+  if (HAL_TIM_SlaveConfigSynchro(&htim1, &sSlaveConfig) != HAL_OK)
   {
     Error_Handler();
   }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM2;
-  sConfigOC.Pulse = glitch_width;
+  sConfigOC.Pulse = 1;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM2_Init 2 */
+  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
+  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+  if (HAL_TIMEx_ConfigBreakDeadTime(&htim1, &sBreakDeadTimeConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM1_Init 2 */
 
-  /* USER CODE END TIM2_Init 2 */
-  HAL_TIM_MspPostInit(&htim2);
+  /* USER CODE END TIM1_Init 2 */
+  HAL_TIM_MspPostInit(&htim1);
 
 }
 
@@ -387,26 +505,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, REFERENCE_Pin|LD2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : TRIGGER_Pin */
-  GPIO_InitStruct.Pin = TRIGGER_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(TRIGGER_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : REFERENCE_Pin */
-  GPIO_InitStruct.Pin = REFERENCE_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  HAL_GPIO_Init(REFERENCE_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
@@ -415,175 +520,77 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-  /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
   /* USER CODE BEGIN MX_GPIO_Init_2 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0;
-    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
-int getParam(uint8_t index, char* origin_str, char* param) {
-	int origin_start_idx = 0;
-	int origin_end_idx = 0;
-	int i = 0;
-	int control_find = 0;
-
-	while(origin_start_idx == 0 || origin_end_idx == 0) {
-		if(origin_str[i] == ':') {
-			if(origin_start_idx == 0) {
-				control_find += 1;
-				if(control_find == index) {
-					origin_start_idx = i + 1;
-				}
-			} else {
-				origin_end_idx = i;
-			}
-		} else if (origin_str[i] == '\0') {
-			origin_start_idx = -1;
-			origin_end_idx = -1;
-		}
-
-		i++;
-	}
-
-	if(origin_start_idx > 0 && origin_end_idx > 0) {
-		int len = origin_end_idx - origin_start_idx;
-		memcpy(param, &origin_str[origin_start_idx], len);
-		param[len] = '\0';
-		return len;
-	} else {
-		return -1;
-	}
-}
-
-void processRXData(char* data) {
-	char buffer[50];
-
-	RXProtocolCMD cmd = (RXProtocolCMD)data[0];
-
-	if(a_state != IDLE && cmd != RESET_STATE) {
-		snprintf(buffer, sizeof(buffer), "ERROR: NOT IDLE STATE\n");
-		HAL_UART_Transmit(&huart2, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
-		return;
-	};
-
-	switch(cmd) {
-
-	// C:<COUNT>:;
-	case GLITCH_COUNT:
-		char count_str[5];
-		getParam(1, data, count_str);
-		glitch_count = atoi(count_str);
-		snprintf(buffer, sizeof(buffer), "OK: G_COUNT=%d\n", glitch_count);
-		break;
-
-	// L:<LATENCY>:;
-	case GLITCH_LATENCY:
-		char latency_str[5];
-		getParam(1, data, latency_str);
-		glitch_latency = atoi(latency_str);
-		snprintf(buffer, sizeof(buffer), "OK: G_LATENCY=%d\n", glitch_latency);
-		break;
-
-	// W:<WIDTH>:;
-	case GLITCH_WIDTH:
-		char width_str[5];
-		getParam(1, data, width_str);
-		glitch_width = atoi(width_str);
-		snprintf(buffer, sizeof(buffer), "OK: G_WIDTH=%d\n", glitch_width);
-		break;
-
-	// P:<PERIOD>:;
-	case GLITCH_PERIOD:
-		char period_str[5];
-		getParam(1, data, period_str);
-		glitch_period = atoi(period_str);
-		snprintf(buffer, sizeof(buffer), "OK: G_PERIOD=%d\n", glitch_period);
-		break;
-
-	// R:;
-	case RESET_STATE:
-		glitch_count = 1;
-		glitch_latency = 0;
-		glitch_period = 200;
-		glitch_width = 10;
-
-		a_state = IDLE;
-		snprintf(buffer, sizeof(buffer), "OK: IDLE\n");
-		break;
-
-	case ARMED_SWITCH:
-		a_state = ARMED;
-		snprintf(buffer, sizeof(buffer), "OK: ARMED\n");
-		break;
-	}
-
-
-	HAL_UART_Transmit(&huart2, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	if(huart->Instance == USART2) {
-		if (rxByte == ';') {
-			rxBuffer[rxIndex] = '\0';
-			processRXData(rxBuffer);
-			rxIndex = 0;
-		} else {
-			if (rxIndex < UART_BUFFER_SIZE - 1) {
-				rxBuffer[rxIndex++] = rxByte;
-			}
-		}
-
-		HAL_UART_Receive_IT(&huart2, &rxByte, 1);
-	}
-}
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	if(GPIO_Pin == TRIGGER_Pin) {
-		if(a_state == ARMED) {
-			trigger_event = 1;
-		}
-
-		if(a_state == ATTACK) {
-			trigger_event = 1;
-		}
-	}
-}
-
-void DWT_Init(void)
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-    // Abilita TRC
-    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-    // Reset del counter
-    DWT->CYCCNT = 0;
-    // Abilita il counter
-    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+    if (huart->Instance == USART2)
+    {
+        if (rxByte == 'A')
+        {
+            if ((system_armed == 0) && (next_ccr1_ready))
+            {
+                armed_ccr1 = next_ccr1;
+                next_ccr1_ready = 0;
+
+                TIM1_Config_OnePulse_WithCCR(armed_ccr1);
+
+                system_armed = 1;
+                Arm_TIM1_OnePulse();
+            }
+        }
+        else if (rxByte == 'I')
+        {
+            char msg[64];
+            int len;
+
+            if (last_pwm_valid)
+            {
+                len = snprintf(msg,
+                               sizeof(msg),
+                               "CCR1=%lu\r\n",
+                               (unsigned long)last_pwm_ccr1);
+            }
+            else
+            {
+                len = snprintf(msg,
+                               sizeof(msg),
+                               "NO_PWM\r\n");
+            }
+
+            HAL_UART_Transmit(&huart2,
+                              (uint8_t *)msg,
+                              (uint16_t)len,
+                              100);
+
+            /*
+             * Preparo già il CCR1 del prossimo attacco.
+             * Questo avviene DOPO aver inviato il valore al PC,
+             * per evitare un peggioramento della latenza.
+             */
+            rng_state ^= HAL_GetTick();
+            next_ccr1 = Generate_Random_CCR1();
+            next_ccr1_ready = 1;
+        }
+
+        HAL_UART_Receive_IT(&huart2, &rxByte, 1);
+    }
 }
 
-void delay_us(uint32_t us)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    uint32_t cycles = (SystemCoreClock / 1000000) * us;
-    uint32_t start = DWT->CYCCNT;
-    while ((DWT->CYCCNT - start) < cycles);
-}
+    if (htim->Instance == TIM1)
+    {
+        last_pwm_ccr1 = armed_ccr1;
+        last_pwm_valid = 1;
 
-void delay_ns(uint32_t ns)
-{
-    uint32_t cycles = (SystemCoreClock / 1000000000) * ns;
-    uint32_t start = DWT->CYCCNT;
-    while ((DWT->CYCCNT - start) < cycles);
+        Disarm_TIM1_Trigger();
+    }
 }
-
 /* USER CODE END 4 */
 
 /**
