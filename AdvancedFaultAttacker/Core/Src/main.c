@@ -117,7 +117,7 @@ static void Arm_TIM1_OnePulse(void)
 {
     PA8_As_TIM1_CH1();
 
-    __HAL_TIM_DISABLE(&htim1);
+    CLEAR_BIT(htim1.Instance->CR1, TIM_CR1_CEN);
 
     CLEAR_BIT(htim1.Instance->SMCR, TIM_SMCR_SMS);
 
@@ -134,14 +134,13 @@ static void Arm_TIM1_OnePulse(void)
 
     __HAL_TIM_ENABLE_IT(&htim1, TIM_IT_UPDATE);
 
+    /* Enable trigger last: a subsequent CEN clear could cancel a real edge. */
     MODIFY_REG(htim1.Instance->SMCR, TIM_SMCR_SMS, TIM_SLAVEMODE_TRIGGER);
-
-    CLEAR_BIT(htim1.Instance->CR1, TIM_CR1_CEN);
 }
 
 static void Disarm_TIM1_Trigger(void)
 {
-    __HAL_TIM_DISABLE(&htim1);
+    CLEAR_BIT(htim1.Instance->CR1, TIM_CR1_CEN);
 
     CLEAR_BIT(htim1.Instance->SMCR, TIM_SMCR_SMS);
 
@@ -243,7 +242,7 @@ static void TIM1_Config_OnePulse_WithCCR(uint32_t ccr_ticks)
 
     uint32_t arr_ticks = ccr_ticks + ton_ticks - 1U;
 
-    __HAL_TIM_DISABLE(&htim1);
+    CLEAR_BIT(htim1.Instance->CR1, TIM_CR1_CEN);
 
     __HAL_TIM_SET_PRESCALER(&htim1, 0);
     __HAL_TIM_SET_AUTORELOAD(&htim1, arr_ticks);
@@ -447,6 +446,21 @@ static void MX_TIM1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM1_Init 2 */
+  /* SlaveConfigSynchro sets polarity/filter, but does not select CC2S. */
+  TIM_IC_InitTypeDef trigger_input = {0};
+  trigger_input.ICPolarity = TIM_ICPOLARITY_RISING;
+  trigger_input.ICSelection = TIM_ICSELECTION_DIRECTTI;
+  trigger_input.ICPrescaler = TIM_ICPSC_DIV1;
+  trigger_input.ICFilter = 0;
+  if (HAL_TIM_IC_ConfigChannel(&htim1, &trigger_input, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* Accept external triggers only after the UART arm command. */
+  CLEAR_BIT(htim1.Instance->SMCR, TIM_SMCR_SMS);
+  CLEAR_BIT(htim1.Instance->CR1, TIM_CR1_CEN);
+
 
   /* USER CODE END TIM1_Init 2 */
   HAL_TIM_MspPostInit(&htim1);
