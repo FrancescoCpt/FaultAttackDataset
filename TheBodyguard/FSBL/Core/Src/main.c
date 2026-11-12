@@ -173,6 +173,7 @@ int main(void)
 	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
+	// BODYGUARD
 	HAL_Init();
 
 	/* USER CODE BEGIN Init */
@@ -310,10 +311,10 @@ int main(void)
 				uart_tx_buf[i]  = (uint8_t)((w >> 16)  & 0xFFU);  /* ADC2 slave  -> CDR[31:16] */
 			}
 
-			{
-				char c = 'E';
-				HAL_UART_Transmit(&hlpuart1, (uint8_t *)&c, 1, HAL_MAX_DELAY);
-			}
+
+			char c = 'E';
+			HAL_UART_Transmit(&hlpuart1, (uint8_t *)&c, 1, HAL_MAX_DELAY);
+
 
 			flag_uart = 0;
 			prima_acq = 1;

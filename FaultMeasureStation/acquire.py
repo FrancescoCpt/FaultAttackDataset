@@ -1193,3 +1193,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n[!] Interrupted by user")
         sys.exit(130)
+
+
+# python3 acquire.py --protocol 1 -b /dev/tty.usbmodem21202 --scope USB0::0x0AAD::0x01D6::302177::INSTR
