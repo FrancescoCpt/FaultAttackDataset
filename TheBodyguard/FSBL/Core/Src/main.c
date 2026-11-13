@@ -976,6 +976,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		else if (rx_byte == FETCH1_char || rx_byte == FETCH2_char) {  /* 'X' or 'Y' */
 			flag_uart = 1;
 		}
+		else if (rx_byte == RESET_char) {
+			state = IDLE;
+		}
 		/* rilancia subito la ricezione */
 		HAL_UART_Receive_IT(&hlpuart1, &rx_byte, 1);
 	}

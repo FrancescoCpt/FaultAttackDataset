@@ -92,6 +92,7 @@ CMD_START      = b'A'    # -> board(s): start acquisition (and, in Induced, arm 
 CMD_FETCH_1    = b'X'    # -> board(s): transmit buffer #1 (ADC2)
 CMD_FETCH_2    = b'Y'    # -> board(s): transmit buffer #2 (ADC1)
 CMD_INFO       = b'I'    # -> Attacker (Induced only): report last CCR1
+CMD_RESET      = b'R'    # -> board(s): reset to idle (flush buffers, stop ADC)
 ACK_ACQ_DONE   = b'E'    # <- board: acquisition complete
 BUF_TERMINATOR = b':'    # <- board: end-of-buffer line
 
@@ -414,15 +415,23 @@ def _drain(ser: serial.Serial, quiet_seconds: float = 1.0,
     return n
 
 
-def _fit(x: List[int]) -> np.ndarray:
+class BufferFitError(RuntimeError):
+    """ADC conversion failed after the acquisition protocol completed."""
+
+
+def _fit(x: List[int]) -> Optional[np.ndarray]:
     """Trim/pad a raw sample list to exactly NUM_SAMPLES uint16 values."""
-    arr = np.array(x, dtype=np.uint16)
-    if arr.size >= NUM_SAMPLES:
-        return arr[:NUM_SAMPLES]
-    pad = np.full(NUM_SAMPLES - arr.size,
-                  arr[-1] if arr.size else 0,
-                  dtype=np.uint16)
-    return np.concatenate([arr, pad])
+    try:
+        arr = np.array(x, dtype=np.uint16)
+        if arr.size >= NUM_SAMPLES:
+            return arr[:NUM_SAMPLES]
+        pad = np.full(NUM_SAMPLES - arr.size,
+                    arr[-1] if arr.size else 0,
+                    dtype=np.uint16)
+        return np.concatenate([arr, pad])
+    except Exception as e:
+        print(f"Error in _fit: {e}")
+        return None
 
 
 # --------------------------------------------------------------------------- #
@@ -569,6 +578,14 @@ def run_experiment_p1(cfg: Config,
             print(f"      [!] scope arm failed: {e} — continuing without scope")
             scope = None
 
+    # 0.1 Reset the boards to idle (flush buffers, stop ADC)
+    print("[0.1/6] Resetting boards to idle (send 'R')...")
+    for s in (bodyguard):
+        s.write(CMD_RESET)
+        s.flush()
+    
+    time.sleep(0.1)
+    
     # 1. Arm the Attacker
     print("[1/6] Arming Attacker (send 'A')...")
     attacker.write(CMD_START)
@@ -648,7 +665,7 @@ def run_experiment_p1(cfg: Config,
     drained = _drain(bodyguard, quiet_seconds=1.0, hard_limit=15.0)
     print(f"      -> drained {drained} bytes; Bodyguard now IDLE")
 
-    return _fit(adc1), _fit(adc2), meta
+    return _fit_buffers(adc1, adc2, meta)
 
 
 # --------------------------------------------------------------------------- #
@@ -707,7 +724,15 @@ def run_experiment_p2(cfg: Config,
     adc1, _ = _read_ascii_block(board, NUM_SAMPLES, leftover, timeout=60.0)
     print(f"      -> ADC1: {len(adc1)} samples                    ")
 
-    return _fit(adc1), _fit(adc2), meta
+    return _fit_buffers(adc1, adc2, meta)
+
+
+def _fit_buffers(adc1, adc2, meta):
+    adc1_fit = _fit(adc1)
+    adc2_fit = _fit(adc2)
+    if adc1_fit is None or adc2_fit is None:
+        raise BufferFitError("Failed to fit ADC buffers to expected size.")
+    return adc1_fit, adc2_fit, meta
 
 
 def run_experiment(cfg: Config,
@@ -1124,11 +1149,17 @@ def main() -> None:
         s.reset_input_buffer()
 
     try:
-        for run in range(1, args.repeat + 1):
+        run = 1
+        while run <= args.repeat:
             if args.repeat > 1:
                 print(f"\n### Run {run}/{args.repeat} ###")
 
-            adc1, adc2, meta = run_experiment(cfg, ports, scope=scope)
+            try:
+                adc1, adc2, meta = run_experiment(cfg, ports, scope=scope)
+            except BufferFitError as e:
+                print(f"[-] {e} Trial discarded; retrying run {run}/{args.repeat}. "
+                      "No Bodyguard or Scope data written.")
+                continue
 
             print("\n--- Trace statistics ---")
             print(f"  ADC1: n={len(adc1):>4}  min={adc1.min():>3}  "
@@ -1181,6 +1212,7 @@ def main() -> None:
                             protocol_name=PROTO_NAMES[cfg.protocol],
                             sample_rate=cfg.sample_rate,
                             show=True)
+            run += 1
     finally:
         close_ports(ports)
         if scope is not None:
