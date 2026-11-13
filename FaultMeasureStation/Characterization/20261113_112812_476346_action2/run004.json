@@ -1,0 +1,18 @@
+{
+  "result": {
+    "run_id": "run004",
+    "resistor": "",
+    "status": "ok",
+    "error": "",
+    "t_min_us": 41.654399999999995,
+    "v_min": 1.87988,
+    "t_reset_us": 47.5136,
+    "v_reset": 3.04199,
+    "dt_us": 5.8591999999999995,
+    "window_start_us": 39.95039999999999,
+    "window_end_us": 41.95039999999998,
+    "ch3_rise_us": null,
+    "ch3_fall_us": null
+  },
+  "serial": {}
+}
