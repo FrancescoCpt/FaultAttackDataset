@@ -107,6 +107,7 @@ RAMCFG_HandleTypeDef hramcfg_SRAM6;
 /* USER CODE BEGIN PV */
 volatile uint8_t flag_button = 0;
 volatile uint8_t flag_uart   = 0;
+volatile uint8_t flag_reset  = 0;
 volatile uint8_t adc_done    = 0;   /* set by ADC2 callback (unused in dual mode) */
 volatile uint8_t adc_done2   = 0;   /* set by ADC1 (master) callback -> the one we wait on */
 volatile uint8_t prima_acq   = 0;
@@ -234,6 +235,7 @@ int main(void)
 			if (flag_button == 1)
 			{
 				flag_button = 0;
+				flag_reset = 0;
 				HAL_GPIO_WritePin(BLUE_LED_GPIO_Port, BLUE_LED_Pin, GPIO_PIN_RESET);
 				state = ACQUISITION;
 			}
@@ -332,6 +334,11 @@ int main(void)
 				flag_uart = 0;
 				state = SEND1;
 			}
+
+			if (flag_reset == 1) {
+				flag_reset = 0;
+				state = IDLE;
+			}
 			break;
 
 		case SEND1:
@@ -384,6 +391,11 @@ int main(void)
 			{
 				flag_uart = 0;
 				state = SEND2;
+			}
+
+			if (flag_reset == 1) {
+				flag_reset = 0;
+				state = IDLE;
 			}
 			break;
 
@@ -977,7 +989,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			flag_uart = 1;
 		}
 		else if (rx_byte == RESET_char) {
-			state = IDLE;
+			flag_reset = 1;
 		}
 		/* rilancia subito la ricezione */
 		HAL_UART_Receive_IT(&hlpuart1, &rx_byte, 1);
