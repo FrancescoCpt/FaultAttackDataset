@@ -415,6 +415,10 @@ def _drain(ser: serial.Serial, quiet_seconds: float = 1.0,
     return n
 
 
+class AcquisitionDoneTimeout(RuntimeError):
+    """Bodyguard completion ACK missing; retry starts with CMD_RESET."""
+
+
 class BufferFitError(RuntimeError):
     """ADC conversion failed after the acquisition protocol completed."""
 
@@ -580,17 +584,16 @@ def run_experiment_p1(cfg: Config,
 
     # 0.1 Reset the boards to idle (flush buffers, stop ADC)
     print("[0.1/6] Resetting boards to idle (send 'R')...")
-    for s in (bodyguard):
-        s.write(CMD_RESET)
-        s.flush()
+    bodyguard.write(CMD_RESET)
+    bodyguard.flush()
     
-    time.sleep(0.1)
+    time.sleep(0.5)
     
     # 1. Arm the Attacker
     print("[1/6] Arming Attacker (send 'A')...")
     attacker.write(CMD_START)
     attacker.flush()
-    time.sleep(0.1)     # give TIM1 time to reconfigure with fresh CCR1
+    time.sleep(0.5)     # give TIM1 time to reconfigure with fresh CCR1
 
     # 2. Kick off Bodyguard acquisition
     print("[2/6] Starting Bodyguard acquisition (send 'A')...")
@@ -600,7 +603,7 @@ def run_experiment_p1(cfg: Config,
     # 3. Wait for 'E' from Bodyguard
     print("[3/6] Waiting for Bodyguard 'E' (acquisition complete)...")
     if not _wait_for(bodyguard, ACK_ACQ_DONE, timeout=15.0):
-        raise RuntimeError("Bodyguard never signalled 'E' — check wiring / power.")
+        raise AcquisitionDoneTimeout("Bodyguard never signalled 'E' — check wiring / power.")
     print("      -> acquisition complete")
 
     # 3b. Scope readout (if any)
@@ -1156,7 +1159,7 @@ def main() -> None:
 
             try:
                 adc1, adc2, meta = run_experiment(cfg, ports, scope=scope)
-            except BufferFitError as e:
+            except (BufferFitError, AcquisitionDoneTimeout) as e:
                 print(f"[-] {e} Trial discarded; retrying run {run}/{args.repeat}. "
                       "No Bodyguard or Scope data written.")
                 continue

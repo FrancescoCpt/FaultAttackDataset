@@ -186,7 +186,7 @@ int main(void)
 	/* USER CODE BEGIN SysInit */
 	__HAL_RCC_PWR_CLK_ENABLE(); //abilito l'alimentazione analogica dell'adc
 	SET_BIT(PWR->SVMCR3, PWR_SVMCR3_ASV); //settando il bit ASV dichiara attiva
-	//l'alimentazione dell'ADC
+	//l'alim776entazione dell'ADC
 
 	//configurazione del RIFSC (controller che decide chi può accedere a cosa
 	//separa risorse secure da not secure. senza questo blocco leggo val. errati)
