@@ -1,0 +1,77 @@
+{
+  "arguments": {
+    "action": "3",
+    "bodyguard": "/dev/tty.usbmodem21202",
+    "victim": "/dev/tty.usbmodem21303",
+    "attacker": "/dev/tty.usbmodem21403",
+    "runs": 5,
+    "calibration": null,
+    "reference": "Characterization/20261116_153607_081620_action2/summary.json",
+    "out_dir": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Characterization",
+    "no_plot": false,
+    "scope": "USB0::0x0AAD::0x01D6::302177::INSTR",
+    "scope_time_div": 2e-05,
+    "scope_h_pos": 8e-05,
+    "scope_volts_div": 1.0,
+    "scope_trig_source": 2,
+    "scope_trig_level": 1.0,
+    "scope_timeout": 10.0,
+    "ch3_level": 1.0,
+    "ch3_hysteresis": 0.2,
+    "window_start": 0.2,
+    "window_end": 0.9,
+    "reset_level": 3.0,
+    "reset_hold_us": 2.0,
+    "search_start_us": 0.0,
+    "search_end_us": 160.0,
+    "backtrack_half_us": 1.0
+  },
+  "analysis": {
+    "ch3_level": 1.0,
+    "ch3_hysteresis": 0.2,
+    "window_start": 0.2,
+    "window_end": 0.9,
+    "reset_level": 3.0,
+    "reset_hold_us": 2.0,
+    "search_start_us": 0.0,
+    "search_end_us": 160.0,
+    "backtrack_half_us": 1.0
+  },
+  "calibration": null,
+  "reference": {
+    "action": "2",
+    "analysis": {
+      "ch3_level": 0.5,
+      "ch3_hysteresis": 0.2,
+      "window_start": 0.2,
+      "window_end": 0.9,
+      "reset_level": 3.0,
+      "reset_hold_us": 2.0,
+      "search_start_us": 0.0,
+      "search_end_us": 160.0,
+      "backtrack_half_us": 1.0
+    },
+    "attempted_runs": 5,
+    "valid_runs": 4,
+    "requested_runs": 5,
+    "complete": true,
+    "calibration_source": "Characterization/20261116_151839_676518_action1/summary.json",
+    "reference_source": null,
+    "dt_us": {
+      "n": 4,
+      "mean": 7.2216000000000005,
+      "median": 7.310400000000003,
+      "std": 0.41663438808304504,
+      "min": 6.668799999999999,
+      "max": 7.596799999999995
+    },
+    "v_min": {
+      "n": 4,
+      "mean": 1.8041975,
+      "median": 1.9042949999999998,
+      "std": 0.26641638104978954,
+      "min": 1.41113,
+      "max": 1.99707
+    }
+  }
+}

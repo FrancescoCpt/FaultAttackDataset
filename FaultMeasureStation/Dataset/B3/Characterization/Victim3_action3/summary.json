@@ -1,0 +1,36 @@
+{
+  "action": "3",
+  "analysis": {
+    "ch3_level": 1.0,
+    "ch3_hysteresis": 0.2,
+    "window_start": 0.2,
+    "window_end": 0.9,
+    "reset_level": 3.0,
+    "reset_hold_us": 2.0,
+    "search_start_us": 0.0,
+    "search_end_us": 160.0,
+    "backtrack_half_us": 1.0
+  },
+  "attempted_runs": 4,
+  "valid_runs": 3,
+  "requested_runs": null,
+  "complete": false,
+  "calibration_source": null,
+  "reference_source": "Characterization/20261116_153607_081620_action2/summary.json",
+  "dt_us": {
+    "n": 3,
+    "mean": 7.191466666666664,
+    "median": 7.1328000000000005,
+    "std": 0.36673638125135016,
+    "min": 6.8575999999999935,
+    "max": 7.5840000000000005
+  },
+  "v_min": {
+    "n": 3,
+    "mean": 1.707353333333333,
+    "median": 1.7041,
+    "std": 0.2783342604375777,
+    "min": 1.43066,
+    "max": 1.9873
+  }
+}

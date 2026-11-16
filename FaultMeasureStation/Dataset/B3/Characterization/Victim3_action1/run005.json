@@ -1,0 +1,15 @@
+{
+  "result": {
+    "run_id": "run005",
+    "resistor": "",
+    "status": "invalid",
+    "error": "Acquisizione DSO incompleta"
+  },
+  "serial": {
+    "victim_response": "Start",
+    "glitch_effective": true,
+    "attacker_response": "CCR1=4227",
+    "ccr1": 4227,
+    "glitch_delay_us": 50.32142857142857
+  }
+}

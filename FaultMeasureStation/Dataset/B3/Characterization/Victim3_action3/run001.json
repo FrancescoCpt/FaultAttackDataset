@@ -1,0 +1,15 @@
+{
+  "result": {
+    "run_id": "run001",
+    "resistor": "",
+    "status": "invalid",
+    "error": "Atteso un impulso CH3 completo, trovati 0 (soglie salita/discesa: 1.1/0.9 V)"
+  },
+  "serial": {
+    "victim_response": "Start",
+    "glitch_effective": true,
+    "attacker_response": "CCR1=4162",
+    "ccr1": 4162,
+    "glitch_delay_us": 49.54761904761905
+  }
+}
