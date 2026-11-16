@@ -53,10 +53,24 @@ Ogni esecuzione crea una nuova cartella `filter_reports/DATA_ORA` sotto il datas
 - `summary.json`: conteggi, percentuali, motivi e parametri per riprodurre l'analisi.
 - `trace_*.png`: grafici CH2 grezzo/filtrato e CH3 con riferimenti temporali.
 
-`--plots 20` è il default; `--plots -1` disegna tutti gli scarti/casi dubbi e `--plots 0` solo statistiche. Tutti gli ID restano nei CSV anche quando i grafici sono limitati. Nessuna soglia viene applicata ai CSV ADC e non vengono prodotti dataset filtrati in questa prima versione.
+`--plots 20` è il default; `--plots -1` disegna tutti gli scarti/casi dubbi e `--plots 0` solo statistiche. Tutti gli ID restano nei CSV anche quando i grafici sono limitati. Nessuna soglia viene applicata ai CSV ADC ; i CSV filtrati sono copie separate e gli originali restano intatti.
 
 Test dalla radice del repository:
 
 ```sh
 MPLBACKEND=Agg python3 -m unittest discover -s FaultMeasureStation -p test_filter_traces.py -v
 ```
+
+## Esportazione dei CSV filtrati
+
+```sh
+python3 filter_traces.py Dataset/Victim_7/Induced --mode induced --max-good 50 --plots -1
+```
+
+La sottocartella `filtered/` del report contiene copie di tutti i `scope_ch*.csv` e `bodyguard_adc*.csv` presenti nella cartella sorgente. Le righe `TIME` sono preservate e non contano nel limite. Nessun originale viene sovrascritto.
+
+`--max-good N` (default **100**) esporta al massimo N tracce nell'ordine del CSV CH2, includendo nel conteggio le review accettate. Non è un campionamento casuale. Se ci sono meno tracce idonee vengono esportate tutte quelle disponibili. La statistica di classificazione continua a riguardare l'intero dataset.
+
+Le `discard` sono sempre escluse. Per ogni `review` che può ancora rientrare nel limite viene chiesto `s/n`, mostrando il motivo e il percorso del grafico se generato. Non viene assunta una risposta in caso di EOF: l'esportazione si interrompe e i report rimangono disponibili. Una review oltre il limite non viene richiesta né esportata.
+
+Si esportano solo Run ID presenti in **tutti** i CSV sorgente selezionati, per mantenere i canali e gli ADC allineati; gli ID mancanti sono marcati `missing_channel`. `selection.csv` registra per ogni trial la decisione (`keep`, `discard`, `review_accepted`, `review_rejected`, `limit`, `missing_channel`); `summary.json` contiene anche conteggio e Run ID esportati. Non si duplicano tracce per raggiungere N.

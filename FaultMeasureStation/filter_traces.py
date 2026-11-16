@@ -161,11 +161,88 @@ def plot(path, t, y, ch3, r, cfg):
     plt.close(fig)
 
 
+def export_filtered(folder, out, rows, max_good):
+    """Copy selected raw CSV rows, aligned by ID; never modify source files."""
+    paths = sorted(folder.glob('scope_ch*.csv')) + sorted(folder.glob('bodyguard_adc*.csv'))
+    indexes = {}
+    headers = {}
+    for path in paths:
+        offsets = {}
+        with path.open(newline='') as f:
+            while True:
+                offset = f.tell()
+                line = f.readline()
+                if not line:
+                    break
+                run_id = next(csv.reader([line]))[0]
+                if run_id == 'TIME':
+                    if path.name in headers or offsets:
+                        raise ValueError(f'{path}: riga TIME duplicata o non iniziale')
+                    headers[path.name] = line
+                elif run_id in offsets:
+                    raise ValueError(f'{path}: Run ID duplicato {run_id}')
+                else:
+                    offsets[run_id] = offset
+        if path.name.startswith('scope_') and path.name not in headers:
+            raise ValueError(f'{path}: riga TIME mancante')
+        indexes[path.name] = offsets
+    selected = []
+    decisions = []
+    print(f'Report per verificare le review: {out / "report.html"}')
+    for r in rows:
+        rid = r['run_id']
+        decision = 'discard'
+        if r['status'] != 'discard':
+            if any(rid not in offsets for offsets in indexes.values()):
+                decision = 'missing_channel'
+            elif len(selected) >= max_good:
+                decision = 'limit'
+            elif r['status'] == 'review':
+                print(f"REVIEW {rid}: {r['reason']}")
+                if r.get('plot'):
+                    print(f"Grafico: {out / r['plot']}")
+                while True:
+                    try:
+                        answer = input('Includere questa traccia nei CSV filtrati? [s/n]: ').strip().lower()
+                    except EOFError as e:
+                        raise ValueError('Decisione review mancante: esportazione annullata; report conservati.') from e
+                    if answer in ('s', 'si', 'sì', 'y', 'yes', 'n', 'no'):
+                        break
+                decision = 'review_accepted' if answer in ('s','si','sì','y','yes') else 'review_rejected'
+                if decision == 'review_accepted':
+                    selected.append(rid)
+            else:
+                selected.append(rid)
+                decision = 'keep'
+        decisions.append(dict(run_id=rid, status=r['status'], export_decision=decision))
+    # Decide first; no partial export is created while waiting for review answers.
+    target = out / 'filtered'
+    target.mkdir()
+    for path in paths:
+        with path.open(newline='') as src, (target/path.name).open('w', newline='') as dest:
+            if path.name in headers:
+                dest.write(headers[path.name])
+            for rid in selected:
+                src.seek(indexes[path.name][rid])
+                line = src.readline()
+                dest.write(line if line.endswith('\n') else line+'\n')
+    with (out/'selection.csv').open('w',newline='') as f:
+        w=csv.DictWriter(f,fieldnames=['run_id','status','export_decision'])
+        w.writeheader()
+        w.writerows(decisions)
+    result=dict(max_good=max_good, exported=len(selected), run_ids=selected,
+                decisions=dict(Counter(r['export_decision'] for r in decisions)),
+                files=[p.name for p in paths])
+    print(f'Esportate {len(selected)}/{max_good} tracce in {target}')
+    return result
+
+
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__,formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     p.add_argument('folder',type=Path,help='Cartella contenente scope_ch2.csv e, per indotto, scope_ch3.csv')
     p.add_argument('--mode',choices=['auto','induced'],required=True)
     p.add_argument('--out-dir',type=Path)
+    p.add_argument('--max-good',type=int,default=100,help='Massimo numero di tracce esportate, comprese le review accettate')
     p.add_argument('--plots',type=int,default=20,help='Massimo grafici scarto/revisione; -1 per tutti, 0 nessuno')
     for k,v in asdict(Settings()).items():
         p.add_argument('--'+k.replace('_','-'),type=float,default=v)
@@ -173,7 +250,7 @@ def main(argv=None):
     cfg=Settings(**{k:getattr(a,k) for k in asdict(Settings())})
     if (not all(np.isfinite(v) and v>=0 for v in asdict(cfg).values())
             or not 0<cfg.square_max_us<cfg.reset_min_us or cfg.low_hold_us<=0
-            or cfg.min_amplitude_v<=0 or cfg.ch3_level<=cfg.ch3_hysteresis/2 or a.plots < -1):
+            or cfg.min_amplitude_v<=0 or cfg.ch3_level<=cfg.ch3_hysteresis/2 or a.plots < -1 or a.max_good < 1):
         p.error('Soglie non valide')
     ch2=CsvTraces(a.folder/'scope_ch2.csv')
     ch3=CsvTraces(a.folder/'scope_ch3.csv') if (a.folder/'scope_ch3.csv').exists() and a.mode=='induced' else None
@@ -225,6 +302,11 @@ def main(argv=None):
             content.append('<img loading="lazy" src="'+r['plot']+'">')
     (out/'report.html').write_text('\n'.join(content))
     print(json.dumps(summary['counts']),f'\nReport: {out / "report.html"}')
+    summary['export'] = export_filtered(a.folder, out, rows, a.max_good)
+    (out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+    with (out/'report.html').open('a') as f:
+        f.write(f"<p>Tracce esportate: {summary['export']['exported']} / {a.max_good}. "
+                '<a href="selection.csv">Decisioni di esportazione</a>; CSV nella sottocartella filtered.</p>')
     return summary
 
 
