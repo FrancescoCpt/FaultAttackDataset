@@ -1,0 +1,32 @@
+{
+  "mode": "induced",
+  "source": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/Victim_2/Induced",
+  "settings": {
+    "smooth_us": 0.1,
+    "low_hold_us": 2.0,
+    "square_max_us": 0.5,
+    "reset_min_us": 2.0,
+    "timing_margin_us": 0.2,
+    "min_amplitude_v": 0.5,
+    "ch3_level": 0.5,
+    "ch3_hysteresis": 0.2,
+    "ch3_min_width_us": 0.5
+  },
+  "total": 149,
+  "counts": {
+    "keep": 123,
+    "discard": 1,
+    "review": 25
+  },
+  "percentages": {
+    "keep": 82.5503355704698,
+    "discard": 0.6711409395973155,
+    "review": 16.778523489932887
+  },
+  "reasons": {
+    "Compatibile con i criteri richiesti": 123,
+    "Impulso CH3 assente o ambiguo (0)": 25,
+    "CH2 a onda quadra: reset non confermato": 1
+  },
+  "ch3_only_ids": []
+}

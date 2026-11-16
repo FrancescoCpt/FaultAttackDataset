@@ -698,6 +698,13 @@ def run_experiment_p2(cfg: Config,
             print(f"      [!] scope arm failed: {e} — continuing without scope")
             scope = None
 
+    # 0.1 Reset the boards to idle (flush buffers, stop ADC)
+    print("[0.1/6] Resetting boards to idle (send 'R')...")
+    board.write(CMD_RESET)
+    board.flush()
+
+    time.sleep(0.5)
+
     # 1. Start the dual-ADC acquisition on the STM32N6
     print("[1/4] Starting acquisition (send 'A')...")
     board.write(CMD_START)

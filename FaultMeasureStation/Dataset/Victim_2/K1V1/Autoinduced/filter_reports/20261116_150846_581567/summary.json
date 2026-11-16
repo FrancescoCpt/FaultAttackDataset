@@ -1,0 +1,31 @@
+{
+  "mode": "auto",
+  "source": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/Victim_2/Autoinduced",
+  "settings": {
+    "smooth_us": 0.1,
+    "low_hold_us": 2.0,
+    "square_max_us": 0.5,
+    "reset_min_us": 2.0,
+    "timing_margin_us": 0.2,
+    "min_amplitude_v": 0.5,
+    "ch3_level": 0.5,
+    "ch3_hysteresis": 0.2,
+    "ch3_min_width_us": 0.5
+  },
+  "total": 200,
+  "counts": {
+    "keep": 192,
+    "discard": 8,
+    "review": 0
+  },
+  "percentages": {
+    "keep": 96.0,
+    "discard": 4.0,
+    "review": 0.0
+  },
+  "reasons": {
+    "Compatibile con i criteri richiesti": 192,
+    "CH2 a onda quadra: reset non confermato": 8
+  },
+  "ch3_only_ids": []
+}
