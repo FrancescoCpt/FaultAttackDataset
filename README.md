@@ -180,8 +180,8 @@ Le percentuali si riferiscono al valore di **Vmin**, non alla tensione nominale 
 | B1    | 🟩 | - | - | - | 🟩 | - | - | - | 🟩 |
 | B2    | 🟩 | - | - | - | 🟩 | - | - | - | 🟩 |
 | B3    | - | 🟩 | - | - | - | 🟩 | 🟩 | - | - |
-| B4    | - | - | 🟧 | 🟧 | - | - | - | 🟧 | - |
-| B5    | - | 🟧 | - | - | - | 🟧 | 🟧 | - | - |
+| B4    | - | - | 🟩 | 🟩 | - | - | - | 🟩 | - |
+| B5    | - | 🟩 | - | - | - | 🟩 | 🟩 | - | - |
 | B6    | - | - | 🟧 | 🟧 | - | - | - | 🟧 | - |
 
 Il piano comprende **54 combinazioni board–K–V**, assegnate a tre sessioni: ogni board contribuisce con tre combinazioni per sessione. La tabella descrive il disegno sperimentale; la presenza delle singole acquisizioni e la loro numerosità effettiva si verificano nelle cartelle e nei report del dataset.
@@ -201,8 +201,8 @@ Per riprodurre una misura, conservare insieme ai dati l'identificativo della boa
 | B1    | 🟩 S1  | ⬜️ S2 | ⬜️ S3 | ⬜️ S2  | 🟩 S3 | ⬜️ S1 | ⬜️ S3  | ⬜️ S1 | 🟩 S2 |
 | B2    | 🟩 S2  | ⬜️ S3 | ⬜️ S1 | ⬜️ S3  | 🟩 S1 | ⬜️ S2 | ⬜️ S1  | ⬜️ S2 | 🟩 S3 |
 | B3    | ⬜️ S3  | 🟩 S1 | ⬜️ S2 | ⬜️ S1  | ⬜️ S2 | 🟩 S3 | 🟩 S2  | ⬜️ S3 | ⬜️ S1 |
-| B4    | ⬜️ S1  | ⬜️ S2 | 🟧 S3 | 🟧 S2  | ⬜️ S3 | ⬜️ S1 | ⬜️ S3  | 🟧 S1 | ⬜️ S2 |
-| B5    | ⬜️ S2  | 🟧 S3 | ⬜️ S1 | ⬜️ S3  | ⬜️ S1 | 🟧 S2 | 🟧 S1  | ⬜️ S2 | ⬜️ S3 |
+| B4    | ⬜️ S1  | ⬜️ S2 | 🟩 S3 | 🟩 S2  | ⬜️ S3 | ⬜️ S1 | ⬜️ S3  | 🟩 S1 | ⬜️ S2 |
+| B5    | ⬜️ S2  | 🟩 S3 | ⬜️ S1 | ⬜️ S3  | ⬜️ S1 | 🟩 S2 | 🟩 S1  | ⬜️ S2 | ⬜️ S3 |
 | B6    | ⬜️ S3  | ⬜️ S1 | 🟧 S2 | 🟧 S1  | ⬜️ S2 | ⬜️ S3 | ⬜️ S2  | 🟧 S3 | ⬜️ S1 |
 
 Il piano comprende **54 combinazioni board–K–V**, assegnate a tre sessioni: ogni board contribuisce con tre combinazioni per sessione. La tabella descrive il disegno sperimentale; la presenza delle singole acquisizioni e la loro numerosità effettiva si verificano nelle cartelle e nei report del dataset.
@@ -223,8 +223,8 @@ Per riprodurre una misura, conservare insieme ai dati l'identificativo della boa
 | B1    | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 | B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 | B3    | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B4    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ |
-| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ |
+| B4    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ |
+| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ |
 | B6    | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 
 #### Sessione 2
@@ -233,8 +233,8 @@ Per riprodurre una misura, conservare insieme ai dati l'identificativo della boa
 | B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 |
 | B2    | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 | B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ |
-| B4    | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ |
+| B4    | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ |
 | B6    | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 
 #### Sessione 3
@@ -243,6 +243,6 @@ Per riprodurre una misura, conservare insieme ai dati l'identificativo della boa
 | B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 | B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 |
 | B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ |
-| B4    | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B5    | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B4    | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B5    | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 | B6    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ |
