@@ -169,7 +169,7 @@ Le percentuali si riferiscono al valore di **Vmin**, non alla tensione nominale 
 
 | Board | K1 V1 | K1 V2 | K1 V3 | K2 V1 | K2 V2 | K2 V3 | K3 V1 | K3 V2 | K3 V3 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| B1    | <code style="color : green">S1</code>S1    | S2    | S3    | S2    | S3    | S1    | S3    | S1    | S2    |
+| B1    | $${\color{green}Green}$$S1    | S2    | S3    | S2    | S3    | S1    | S3    | S1    | S2    |
 | B2    | S2    | S3    | S1    | S3    | S1    | S2    | S1    | S2    | S3    |
 | B3    | S3    | S1    | S2    | S1    | S2    | S3    | S2    | S3    | S1    |
 | B4    | S1    | S2    | S3    | S2    | S3    | S1    | S3    | S1    | S2    |
