@@ -1,9 +1,0 @@
-{
-  "result": {
-    "run_id": "run003",
-    "resistor": "",
-    "status": "invalid",
-    "error": "Ripresa CH1 non trovata (soglia/durata/finestra)"
-  },
-  "serial": {}
-}

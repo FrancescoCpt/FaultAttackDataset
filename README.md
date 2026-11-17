@@ -167,7 +167,28 @@ Le acquisizioni seguono il piano riportato nella tabella seguente. Le sigle indi
 
 Le percentuali si riferiscono al valore di **Vmin**, non alla tensione nominale di alimentazione. Il riferimento autoindotto viene caratterizzato sul banco e usato per regolare il circuito nelle misure indotte.
 
-### Piano frazionato
+### Piano frazionato (L-18)
+
+🟩 indica una sessione eseguita e presente nel dataset.
+
+🟧 indica una sessione prossima ad essere eseguita.
+
+⬜️ indica una sessione prevista in futuro per completezza del dataset.
+
+| Board | K1 V1 | K1 V2 | K1 V3 | K2 V1 | K2 V2 | K2 V3 | K3 V1 | K3 V2 | K3 V3 |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| B1    | 🟩 | - | - | - | 🟩 | - | - | - | 🟩 |
+| B2    | 🟩 | - | - | - | 🟩 | - | - | - | 🟩 |
+| B3    | - | 🟩 | - | - | - | 🟩 | 🟩 | - | - |
+| B4    | - | - | 🟧 | 🟧 | - | - | - | 🟧 | - |
+| B5    | - | 🟧 | - | - | - | 🟧 | 🟧 | - | - |
+| B6    | - | - | 🟧 | 🟧 | - | - | - | 🟧 | - |
+
+Il piano comprende **54 combinazioni board–K–V**, assegnate a tre sessioni: ogni board contribuisce con tre combinazioni per sessione. La tabella descrive il disegno sperimentale; la presenza delle singole acquisizioni e la loro numerosità effettiva si verificano nelle cartelle e nei report del dataset.
+
+Per riprodurre una misura, conservare insieme ai dati l'identificativo della board, il set AES, il livello Vmin di riferimento e quello misurato, la sessione, la regolazione del circuito e i parametri di acquisizione e filtraggio.
+
+### Piano frazionato (L-54)
 
 🟩 indica una sessione eseguita e presente nel dataset.
 
@@ -190,32 +211,38 @@ Per riprodurre una misura, conservare insieme ai dati l'identificativo della boa
 
 ### Piano Completo
 
+🟩 indica una sessione eseguita e presente nel dataset.
+
+🟧 indica una sessione prossima ad essere eseguita.
+
+⬜️ indica una sessione prevista in futuro per completezza del dataset.
+
 #### Sessione 1
 | Board | K1 V1 | K1 V2 | K1 V3 | K2 V1 | K2 V2 | K2 V3 | K3 V1 | K3 V2 | K3 V3 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B4    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B6    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B1    | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B3    | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B4    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ |
+| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ |
+| B6    | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 
 #### Sessione 2
 | Board | K1 V1 | K1 V2 | K1 V3 | K2 V1 | K2 V2 | K2 V3 | K3 V1 | K3 V2 | K3 V3 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B4    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B6    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 |
+| B2    | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ |
+| B4    | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ |
+| B6    | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
 
 #### Sessione 3
 | Board | K1 V1 | K1 V2 | K1 V3 | K2 V1 | K2 V2 | K2 V3 | K3 V1 | K3 V2 | K3 V3 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B4    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B5    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
-| B6    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B1    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B2    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 |
+| B3    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟩 | ⬜️ | ⬜️ | ⬜️ |
+| B4    | ⬜️ | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B5    | ⬜️ | 🟧 | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ |
+| B6    | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | ⬜️ | 🟧 | ⬜️ |

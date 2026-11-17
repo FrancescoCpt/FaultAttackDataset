@@ -1,9 +1,0 @@
-{
-  "result": {
-    "run_id": "run002",
-    "resistor": "",
-    "status": "invalid",
-    "error": "Acquisizione DSO incompleta"
-  },
-  "serial": {}
-}
