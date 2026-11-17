@@ -167,14 +167,14 @@ Le acquisizioni seguono il piano riportato nella tabella seguente. Le sigle indi
 
 Le percentuali si riferiscono al valore di **Vmin**, non alla tensione nominale di alimentazione. Il riferimento autoindotto viene caratterizzato sul banco e usato per regolare il circuito nelle misure indotte.
 
-| Board | K1 V1 | K1 V2 | K1 V3 | K2 V1 | K2 V2 | K2 V3 | K3 V1 | K3 V2 | K3 V3 |
-| ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| B1    | $${\color{green}Green}$$S1    | S2    | S3    | S2    | S3    | S1    | S3    | S1    | S2    |
-| B2    | S2    | S3    | S1    | S3    | S1    | S2    | S1    | S2    | S3    |
-| B3    | S3    | S1    | S2    | S1    | S2    | S3    | S2    | S3    | S1    |
-| B4    | S1    | S2    | S3    | S2    | S3    | S1    | S3    | S1    | S2    |
-| B5    | S2    | S3    | S1    | S3    | S1    | S2    | S1    | S2    | S3    |
-| B6    | S3    | S1    | S2    | S1    | S2    | S3    | S2    | S3    | S1    |
+| Board | K1 V1     | K1 V2     | K1 V3     | K2 V1     | K2 V2     | K2 V3     | K3 V1     | K3 V2     | K3 V3     |
+| ----- | -----     | -----     | -----     | -----     | -----     | -----     | -----     | -----     | -----     |
+| B1    | **S1**    | S2        | S3        | S2        | **S3**    | S1        | S3        | S1        | **S2**    |
+| B2    | **S2**    | S3        | S1        | S3        | S1        | S2        | S1        | S2        | S3        |
+| B3    | S3        | **S1**    | S2        | S1        | S2        | **S3**    | **S2**    | S3        | S1        |
+| B4    | S1        | S2        | S3        | S2        | S3        | S1        | S3        | S1        | S2        |
+| B5    | S2        | S3        | S1        | S3        | S1        | S2        | S1        | S2        | S3        |
+| B6    | S3        | S1        | S2        | S1        | S2        | S3        | S2        | S3        | S1        |
 
 Il piano comprende **54 combinazioni board–K–V**, assegnate a tre sessioni: ogni board contribuisce con tre combinazioni per sessione. La tabella descrive il disegno sperimentale; la presenza delle singole acquisizioni e la loro numerosità effettiva si verificano nelle cartelle e nei report del dataset.
 
