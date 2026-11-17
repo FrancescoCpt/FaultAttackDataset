@@ -1,0 +1,2 @@
+run_id,resistor,status,error,t_min_us,v_min,t_reset_us,v_reset,dt_us,window_start_us,window_end_us,ch3_rise_us,ch3_fall_us,difference_v
+run001,,ok,,99.96160000000002,1.83105,105.84640000000002,3.03223,5.884800000000002,98.28320000000001,100.28320000000001,,,

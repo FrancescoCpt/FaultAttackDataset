@@ -1,0 +1,33 @@
+{
+  "mode": "induced",
+  "source": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Induced_Traces",
+  "settings": {
+    "smooth_us": 0.1,
+    "low_hold_us": 2.0,
+    "square_max_us": 0.5,
+    "reset_min_us": 2.0,
+    "timing_margin_us": 0.2,
+    "min_amplitude_v": 0.5,
+    "ch3_level": 0.5,
+    "ch3_hysteresis": 0.2,
+    "ch3_min_width_us": 0.5
+  },
+  "total": 198,
+  "counts": {
+    "keep": 93,
+    "discard": 71,
+    "review": 34
+  },
+  "percentages": {
+    "keep": 46.96969696969697,
+    "discard": 35.85858585858586,
+    "review": 17.171717171717173
+  },
+  "reasons": {
+    "Glitch successivo al reset stimato": 71,
+    "Compatibile con i criteri richiesti": 93,
+    "Impulso CH3 assente o ambiguo (0)": 28,
+    "Glitch e reset troppo vicini: ordine temporale incerto": 6
+  },
+  "ch3_only_ids": []
+}
