@@ -167,11 +167,13 @@ Le acquisizioni seguono il piano riportato nella tabella seguente. Le sigle indi
 
 Le percentuali si riferiscono al valore di **Vmin**, non alla tensione nominale di alimentazione. Il riferimento autoindotto viene caratterizzato sul banco e usato per regolare il circuito nelle misure indotte.
 
+🟩 indica una sessione eseguita e presente nel dataset. Le celle senza indicatore corrispondono a sessioni previste.
+
 | Board | K1 V1     | K1 V2     | K1 V3     | K2 V1     | K2 V2     | K2 V3     | K3 V1     | K3 V2     | K3 V3     |
 | ----- | -----     | -----     | -----     | -----     | -----     | -----     | -----     | -----     | -----     |
-| B1    | **S1**    | S2        | S3        | S2        | **S3**    | S1        | S3        | S1        | **S2**    |
-| B2    | **S2**    | S3        | S1        | S3        | S1        | S2        | S1        | S2        | S3        |
-| B3    | S3        | **S1**    | S2        | S1        | S2        | **S3**    | **S2**    | S3        | S1        |
+| B1    | 🟩 S1    | S2        | S3        | S2        | 🟩 S3    | S1        | S3        | S1        | 🟩 S2    |
+| B2    | 🟩 S2    | S3        | S1        | S3        | S1        | S2        | S1        | S2        | S3        |
+| B3    | S3        | 🟩 S1    | S2        | S1        | S2        | 🟩 S3    | 🟩 S2    | S3        | S1        |
 | B4    | S1        | S2        | S3        | S2        | S3        | S1        | S3        | S1        | S2        |
 | B5    | S2        | S3        | S1        | S3        | S1        | S2        | S1        | S2        | S3        |
 | B6    | S3        | S1        | S2        | S1        | S2        | S3        | S2        | S3        | S1        |
