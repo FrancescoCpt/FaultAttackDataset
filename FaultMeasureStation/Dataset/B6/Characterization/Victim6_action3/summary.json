@@ -1,0 +1,36 @@
+{
+  "action": "3",
+  "analysis": {
+    "ch3_level": 0.9,
+    "ch3_hysteresis": 0.2,
+    "window_start": 0.2,
+    "window_end": 0.9,
+    "reset_level": 3.0,
+    "reset_hold_us": 2.0,
+    "search_start_us": 0.0,
+    "search_end_us": 160.0,
+    "backtrack_half_us": 1.0
+  },
+  "attempted_runs": 6,
+  "valid_runs": 5,
+  "requested_runs": null,
+  "complete": false,
+  "calibration_source": null,
+  "reference_source": "Dataset/B6/Characterization/Victim6_action2/summary.json",
+  "dt_us": {
+    "n": 5,
+    "mean": 5.109759999999999,
+    "median": 6.54719999999999,
+    "std": 3.0375049971975403,
+    "min": 1.7983999999999996,
+    "max": 8.569600000000007
+  },
+  "v_min": {
+    "n": 5,
+    "mean": 0.915038,
+    "median": 1.14746,
+    "std": 0.6888528357889658,
+    "min": 0.161133,
+    "max": 1.68457
+  }
+}

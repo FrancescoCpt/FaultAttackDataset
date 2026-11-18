@@ -272,6 +272,7 @@ def main(argv=None):
             print(f'\n{run_id}' + (f'/{a.runs}' if a.action != '3' else ''))
             # Fail before any serial start if scope.arm itself raises.
             scope.arm()
+            time.sleep(0.5)
             adc1, adc2, meta = acquire.run_experiment(cfg, ports, ArmedScope(scope))
             row = dict(run_id=run_id, resistor=resistor, status='invalid', error='')
             arrays = dict(adc1=adc1, adc2=adc2)
