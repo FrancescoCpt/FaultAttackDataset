@@ -182,7 +182,7 @@ Le percentuali si riferiscono al valore di **Vmin**, non alla tensione nominale 
 | B3    | - | 🟩 | - | - | - | 🟩 | 🟩 | - | - |
 | B4    | - | - | 🟩 | 🟩 | - | - | - | 🟩 | - |
 | B5    | - | 🟩 | - | - | - | 🟩 | 🟩 | - | - |
-| B6    | - | - | 🟧 | 🟧 | - | - | - | 🟧 | - |
+| B6    | - | - | 🟩 | 🟧 | - | - | - | 🟧 | - |
 
 Il piano comprende **54 combinazioni board–K–V**, assegnate a tre sessioni: ogni board contribuisce con tre combinazioni per sessione. La tabella descrive il disegno sperimentale; la presenza delle singole acquisizioni e la loro numerosità effettiva si verificano nelle cartelle e nei report del dataset.
 
