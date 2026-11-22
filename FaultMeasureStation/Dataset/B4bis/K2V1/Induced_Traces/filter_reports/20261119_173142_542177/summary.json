@@ -1,0 +1,44 @@
+{
+  "mode": "induced",
+  "source": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Induced_Traces",
+  "settings": {
+    "smooth_us": 0.1,
+    "low_hold_us": 2.0,
+    "square_max_us": 0.5,
+    "reset_min_us": 2.0,
+    "timing_margin_us": 0.2,
+    "min_amplitude_v": 0.5,
+    "ch3_level": 0.5,
+    "ch3_hysteresis": 0.2,
+    "ch3_min_width_us": 0.5
+  },
+  "total": 148,
+  "counts": {
+    "keep": 96,
+    "discard": 19,
+    "review": 33
+  },
+  "percentages": {
+    "keep": 64.86486486486487,
+    "discard": 12.837837837837839,
+    "review": 22.2972972972973
+  },
+  "reasons": {
+    "Compatibile con i criteri richiesti": 96,
+    "Impulso CH3 assente o ambiguo (0)": 32,
+    "ADC non valido: bodyguard_adc1.csv: campione 135 = '22121': atteso intero in [0, 255] (8 bit)": 1,
+    "Glitch successivo al reset stimato": 8,
+    "ADC non valido: bodyguard_adc1.csv: campione 123 = '22221': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 133 = '2224': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 128 = '22221': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 129 = '2224': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 125 = '22021': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 116 = '22221': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 134 = '22221': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 130 = '2225': atteso intero in [0, 255] (8 bit)": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 190 = '2221': atteso intero in [0, 255] (8 bit)": 1,
+    "Glitch e reset troppo vicini: ordine temporale incerto": 1,
+    "ADC non valido: bodyguard_adc1.csv: campione 123 = '22225': atteso intero in [0, 255] (8 bit)": 1
+  },
+  "ch3_only_ids": []
+}

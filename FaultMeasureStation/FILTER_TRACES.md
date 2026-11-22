@@ -42,6 +42,12 @@ Opzioni principali (`--help` per tutte):
 --ch3-min-width-us 0.5
 ```
 
+## Controllo dei campioni ADC a 8 bit
+
+Per ogni trial non già scartato dai criteri CH2/CH3, vengono verificati i campioni in `bodyguard_adc1.csv` e `bodyguard_adc2.csv`, abbinati tramite Run ID. Ogni campione deve essere un intero compreso tra **0 e 255 inclusi**. Basta un campione fuori intervallo, non numerico, non finito (`NaN`, infinito) o frazionario, oppure una traccia vuota, per classificare l'intero trial come `discard`, anche se prima era `review`.
+
+Il motivo dello scarto riporta il file ADC e il primo campione non valido (posizione a partire da 1, escluso il Run ID) per ciascun ADC interessato. Lo scarto compare nei report e nelle statistiche ed esclude il Run ID da tutti i CSV esportati, senza chiedere conferma. Il controllo viene applicato ai due file ADC quando presenti; l'esclusione degli ID mancanti dai canali disponibili resta gestita dall'esportazione.
+
 ## Risultati
 
 Ogni esecuzione crea una nuova cartella `filter_reports/DATA_ORA` sotto il dataset. `--out-dir CARTELLA_NUOVA` cambia destinazione.
@@ -53,7 +59,7 @@ Ogni esecuzione crea una nuova cartella `filter_reports/DATA_ORA` sotto il datas
 - `summary.json`: conteggi, percentuali, motivi e parametri per riprodurre l'analisi.
 - `trace_*.png`: grafici CH2 grezzo/filtrato e CH3 con riferimenti temporali.
 
-`--plots 20` è il default; `--plots -1` disegna tutti gli scarti/casi dubbi e `--plots 0` solo statistiche. Tutti gli ID restano nei CSV anche quando i grafici sono limitati. Nessuna soglia viene applicata ai CSV ADC ; i CSV filtrati sono copie separate e gli originali restano intatti.
+`--plots 20` è il default; `--plots -1` disegna tutti gli scarti/casi dubbi e `--plots 0` solo statistiche. Tutti gli ID restano nei CSV anche quando i grafici sono limitati. I CSV ADC sono sottoposti al controllo di validità a 8 bit descritto sotto; i CSV filtrati sono copie separate e gli originali restano intatti.
 
 Test dalla radice del repository:
 

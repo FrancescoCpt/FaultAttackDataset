@@ -12,6 +12,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 import acquire
+from acquire import BufferFitError, AcquisitionDoneTimeout
 
 
 @dataclass
@@ -273,7 +274,16 @@ def main(argv=None):
             # Fail before any serial start if scope.arm itself raises.
             scope.arm()
             time.sleep(0.5)
-            adc1, adc2, meta = acquire.run_experiment(cfg, ports, ArmedScope(scope))
+            try:
+                adc1, adc2, meta = acquire.run_experiment(cfg, ports, ArmedScope(scope))
+                print(f"[+] Run {run}/{a.runs} completed; data saved.")
+            except (BufferFitError, AcquisitionDoneTimeout, RuntimeError) as e:
+                print(f"[-] {e} Trial discarded; retrying run {run}/{a.runs}. "
+                        "No Bodyguard or Scope data written.")
+                run -= 1
+                continue
+            
+            # adc1, adc2, meta = acquire.run_experiment(cfg, ports, ArmedScope(scope))
             row = dict(run_id=run_id, resistor=resistor, status='invalid', error='')
             arrays = dict(adc1=adc1, adc2=adc2)
             for key in ('scope_adc1','scope_adc2','scope_adc3'):

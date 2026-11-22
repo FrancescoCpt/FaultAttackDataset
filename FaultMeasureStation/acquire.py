@@ -713,7 +713,7 @@ def run_experiment_p2(cfg: Config,
     # 2. Wait for 'E' (both buffers full)
     print("[2/4] Waiting for 'E' (acquisition complete)...")
     if not _wait_for(board, ACK_ACQ_DONE, timeout=15.0):
-        raise RuntimeError("STM32N6 never signalled 'E' — check wiring / power.")
+        raise AcquisitionDoneTimeout("STM32N6 never signalled 'E' — check wiring / power.")
     print("      -> acquisition complete")
 
     # 2b. Scope readout (if any)

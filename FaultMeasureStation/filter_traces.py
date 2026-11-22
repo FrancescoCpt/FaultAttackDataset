@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline, non-destructive CH2 reset / CH3 glitch screening of acquisition CSVs."""
+"""Offline, non-destructive CH2 / CH3 screening and 8-bit ADC validation."""
 import argparse
 import csv
 import html
@@ -52,6 +52,38 @@ class CsvTraces:
             f.seek(self.offsets[run_id])
             row = next(csv.reader([f.readline()]))
         return trace(self.t, np.asarray(row[1:], float))
+
+
+def adc_errors(folder):
+    """Scan available ADC files, retaining only invalid Run IDs and diagnostics."""
+    errors = {}
+    for name in ('bodyguard_adc1.csv', 'bodyguard_adc2.csv'):
+        path = folder / name
+        if not path.exists():
+            continue
+        seen = set()
+        with path.open(newline='') as f:
+            for row in csv.reader(f):
+                if not row:
+                    continue
+                run_id = row[0]
+                if run_id == 'TIME':
+                    continue
+                if run_id in seen:
+                    raise ValueError(f'{path}: Run ID duplicato: {run_id}')
+                seen.add(run_id)
+                reason = 'traccia ADC vuota' if len(row) == 1 else None
+                for index, value in enumerate(row[1:], 1):
+                    try:
+                        sample = float(value)
+                    except ValueError:
+                        sample = float('nan')
+                    if not np.isfinite(sample) or not 0 <= sample <= 255 or not sample.is_integer():
+                        reason = f'campione {index} = {value!r}: atteso intero in [0, 255] (8 bit)'
+                        break
+                if reason:
+                    errors.setdefault(run_id, []).append(f'{name}: {reason}')
+    return errors
 
 
 def smooth(y, count):
@@ -254,6 +286,7 @@ def main(argv=None):
         p.error('Soglie non valide')
     ch2=CsvTraces(a.folder/'scope_ch2.csv')
     ch3=CsvTraces(a.folder/'scope_ch3.csv') if (a.folder/'scope_ch3.csv').exists() and a.mode=='induced' else None
+    invalid_adc = adc_errors(a.folder)
     out=a.out_dir or a.folder/'filter_reports'/datetime.now().strftime('%Y%m%d_%H%M%S_%f')
     out.mkdir(parents=True,exist_ok=False)
     rows=[]
@@ -266,12 +299,19 @@ def main(argv=None):
             if ch3 is not None and run_id in ch3.offsets:
                 extra=ch3.read(run_id)
             r.update(classify(t,y,cfg,a.mode,extra))
+        except ValueError as e:
+            r.update(status='review',reason=str(e))
+        if r['status'] != 'discard' and run_id in invalid_adc:
+            r.update(status='discard', reason='ADC non valido: ' + '; '.join(invalid_adc[run_id]))
+        try:
             if r['status']!='keep' and (a.plots==-1 or images<a.plots):
+                t,y=ch2.read(run_id)
                 r['plot']=f'trace_{n:05d}.png'
                 plot(out/r['plot'],t,y,extra,r,cfg)
                 images+=1
         except ValueError as e:
-            r.update(status='review',reason=str(e))
+            r.pop('plot', None)
+            r['plot_error'] = str(e)
         rows.append(r)
         if r['status']!='keep':
             print(f"{r['status'].upper():7} {run_id}: {r['reason']}")

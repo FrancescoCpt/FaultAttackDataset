@@ -1,0 +1,25 @@
+{
+  "result": {
+    "run_id": "run011",
+    "resistor": "",
+    "status": "ok",
+    "error": "",
+    "t_min_us": 43.1072,
+    "v_min": 1.62598,
+    "t_reset_us": 47.82079999999999,
+    "v_reset": 3.0127,
+    "dt_us": 4.713599999999995,
+    "window_start_us": 42.957096201029756,
+    "window_end_us": 43.6492509236823,
+    "ch3_rise_us": 42.75933770884331,
+    "ch3_fall_us": 43.74813016977553,
+    "difference_v": -0.3125
+  },
+  "serial": {
+    "victim_response": "Start",
+    "glitch_effective": true,
+    "attacker_response": "CCR1=3615",
+    "ccr1": 3615,
+    "glitch_delay_us": 43.035714285714285
+  }
+}

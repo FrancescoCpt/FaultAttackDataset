@@ -5,7 +5,7 @@ import io
 import contextlib
 from pathlib import Path
 from unittest.mock import patch
-from filter_traces import export_filtered
+from filter_traces import export_filtered, adc_errors, main
 import numpy as np
 from filter_traces import Settings, classify, pulses
 
@@ -57,6 +57,44 @@ class FilterTests(unittest.TestCase):
 
     def test_intermediate_duration_review(self):
         self.assertEqual(classify(self.t,self.signal(1.5),self.cfg,'auto')['status'],'review')
+
+
+class AdcTests(unittest.TestCase):
+    def test_invalid_samples_in_either_adc(self):
+        for channel in (1, 2):
+            with self.subTest(channel=channel), tempfile.TemporaryDirectory() as tmp:
+                folder = Path(tmp)
+                values = ['256', '-1', 'NaN', 'inf', 'broken', '1.5', '']
+                (folder / f'bodyguard_adc{channel}.csv').write_text(
+                    'valid,0,255,128\n' + ''.join(f'bad{i},0,{v}\n' for i, v in enumerate(values))
+                    + 'empty\n')
+                errors = adc_errors(folder)
+                self.assertNotIn('valid', errors)
+                self.assertEqual(len(errors), len(values) + 1)
+                self.assertIn('campione 2', errors['bad0'][0])
+
+    def test_invalid_keep_and_review_are_discarded_before_export(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            (folder / 'scope_ch2.csv').write_text('TIME,0,1,2\nvalid,0,1,0\nbad_keep,0,1,0\nbad_review,0,1,0\n')
+            (folder / 'bodyguard_adc1.csv').write_text('bad_review,0,255\nvalid,0,255\nbad_keep,0,256\n')
+            (folder / 'bodyguard_adc2.csv').write_text('bad_keep,0,255\nbad_review,999,0\nvalid,255,0\n')
+            out = folder / 'report'
+            classifications = [dict(status=s, reason='test') for s in ('keep', 'keep', 'review')]
+            with patch('filter_traces.classify', side_effect=classifications), \
+                    patch('builtins.input') as ask, contextlib.redirect_stdout(io.StringIO()):
+                result = main([str(folder), '--mode', 'auto', '--plots', '0', '--out-dir', str(out)])
+            ask.assert_not_called()
+            self.assertEqual(result['counts'], dict(keep=1, discard=2, review=0))
+            self.assertEqual(result['export']['run_ids'], ['valid'])
+            with (out / 'discard.csv').open() as f:
+                discarded = list(csv.DictReader(f))
+            self.assertIn('bodyguard_adc1.csv', discarded[0]['reason'])
+            self.assertIn('bodyguard_adc2.csv', discarded[1]['reason'])
+            for name in ('bodyguard_adc1.csv', 'bodyguard_adc2.csv', 'scope_ch2.csv'):
+                data = (out / 'filtered' / name).read_text()
+                self.assertIn('valid,', data)
+                self.assertNotIn('bad_', data)
 
 
 class ExportTests(unittest.TestCase):
