@@ -1,0 +1,18 @@
+{
+  "chosen_config": "aligned_crop_derivative_datasetstd",
+  "reason": "Massima balanced accuracy media in leave-one-dataset-out tra le elaborazioni provate.",
+  "parameters": {
+    "datasets_dir": "Datasets",
+    "output_dir": "elaboration_outputs",
+    "channel": "ALIM",
+    "baseline_samples": 300,
+    "event_search_start": 0,
+    "event_search_end": 1200,
+    "event_smooth": 31,
+    "crop_pre": 600,
+    "crop_post": 2600,
+    "pca_components": 40,
+    "max_samples_per_class": 0,
+    "random_state": 42
+  }
+}

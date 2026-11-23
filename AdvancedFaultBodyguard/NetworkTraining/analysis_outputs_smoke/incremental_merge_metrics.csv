@@ -1,0 +1,26 @@
+merge_step,train_datasets,test_dataset,seen_in_train,accuracy,balanced_accuracy,auc
+1,Dataset_HDMI__ALIM,Dataset_7Nani__ALIM,False,0.5,0.5,0.4165625
+1,Dataset_HDMI__ALIM,Dataset_GPIOs__ALIM,False,0.5,0.5,0.40656250000000005
+1,Dataset_HDMI__ALIM,Dataset_GoldenBoys__ALIM,False,0.56875,0.56875,0.80359375
+1,Dataset_HDMI__ALIM,Dataset_HDMI__ALIM,True,1.0,1.0,1.0
+1,Dataset_HDMI__ALIM,Dataset_PICOs__ALIM,False,0.5125,0.5125,0.9196875
+2,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,Dataset_7Nani__ALIM,False,0.55,0.5499999999999999,0.62609375
+2,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,Dataset_GPIOs__ALIM,False,0.50625,0.50625,0.21125
+2,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,Dataset_GoldenBoys__ALIM,False,0.6,0.6,0.93546875
+2,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,Dataset_HDMI__ALIM,True,1.0,1.0,1.0
+2,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM,Dataset_PICOs__ALIM,True,1.0,1.0,1.0
+3,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM,Dataset_7Nani__ALIM,False,0.6,0.6,0.7909375
+3,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM,Dataset_GPIOs__ALIM,False,0.5,0.5,0.37156249999999996
+3,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM,Dataset_GoldenBoys__ALIM,True,1.0,1.0,1.0
+3,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM,Dataset_HDMI__ALIM,True,1.0,1.0,1.0
+3,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM,Dataset_PICOs__ALIM,True,1.0,1.0,1.0
+4,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM,Dataset_7Nani__ALIM,False,0.50625,0.50625,0.7982812499999999
+4,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM,Dataset_GPIOs__ALIM,True,1.0,1.0,1.0
+4,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM,Dataset_GoldenBoys__ALIM,True,1.0,1.0,1.0
+4,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM,Dataset_HDMI__ALIM,True,1.0,1.0,1.0
+4,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM,Dataset_PICOs__ALIM,True,1.0,1.0,1.0
+5,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM + Dataset_7Nani__ALIM,Dataset_7Nani__ALIM,True,1.0,1.0,1.0
+5,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM + Dataset_7Nani__ALIM,Dataset_GPIOs__ALIM,True,1.0,1.0,1.0
+5,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM + Dataset_7Nani__ALIM,Dataset_GoldenBoys__ALIM,True,1.0,1.0,1.0
+5,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM + Dataset_7Nani__ALIM,Dataset_HDMI__ALIM,True,1.0,1.0,1.0
+5,Dataset_HDMI__ALIM + Dataset_PICOs__ALIM + Dataset_GoldenBoys__ALIM + Dataset_GPIOs__ALIM + Dataset_7Nani__ALIM,Dataset_PICOs__ALIM,True,1.0,1.0,1.0

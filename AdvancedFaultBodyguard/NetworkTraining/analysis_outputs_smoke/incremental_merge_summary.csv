@@ -1,0 +1,10 @@
+merge_step,seen_in_train,mean_balanced_accuracy,mean_auc,n_tests
+1,False,0.5203125,0.6366015625,4
+1,True,1.0,1.0,1
+2,False,0.5520833333333334,0.5909375,3
+2,True,1.0,1.0,2
+3,False,0.55,0.5812499999999999,2
+3,True,1.0,1.0,3
+4,False,0.50625,0.7982812499999999,1
+4,True,1.0,1.0,4
+5,True,1.0,1.0,5

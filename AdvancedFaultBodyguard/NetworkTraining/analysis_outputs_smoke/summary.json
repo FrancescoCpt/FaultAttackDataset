@@ -1,0 +1,25 @@
+{
+  "datasets_dir": "Datasets",
+  "channel": "ALIM",
+  "normalization": "trace-zscore",
+  "n_files": 10,
+  "n_single_pairs": 5,
+  "best_single_dataset": {
+    "dataset": "Dataset_HDMI",
+    "channel": "ALIM",
+    "n_autoindotto": 80,
+    "n_indotto": 80,
+    "cv_accuracy": 1.0,
+    "cv_balanced_accuracy": 1.0,
+    "cv_auc": 1.0,
+    "pca_fisher_ratio": 6.024599083530109,
+    "pca_var_1": 0.17210520803928375,
+    "pca_var_2": 0.02690654806792736
+  },
+  "merge_unseen_mean_balanced_accuracy_by_step": {
+    "1": 0.5203125,
+    "2": 0.5520833333333334,
+    "3": 0.55,
+    "4": 0.50625
+  }
+}

@@ -1,0 +1,6 @@
+dataset,is_sensitive_dataset,n,balanced_accuracy,auc
+Dataset_7Nani__ALIM,True,212,0.7216981132075472,0.792185831256675
+Dataset_GPIOs__ALIM,True,99,0.7052696078431373,0.7638888888888888
+Dataset_GoldenBoys__ALIM,False,120,1.0,1.0
+Dataset_HDMI__ALIM,False,59,1.0,1.0
+Dataset_PICOs__ALIM,False,56,1.0,1.0

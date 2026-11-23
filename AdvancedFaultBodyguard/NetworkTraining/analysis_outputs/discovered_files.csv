@@ -1,0 +1,11 @@
+path,dataset,channel,label
+Datasets/Dataset_7Nani/ALIM_ATTACCO_finale.csv,Dataset_7Nani,ALIM,1
+Datasets/Dataset_7Nani/ALIM_AUTOINDOTTO_finale.csv,Dataset_7Nani,ALIM,0
+Datasets/Dataset_GPIOs/dataset_ALIM_VITT_AUTINDOTTO_perfect.csv,Dataset_GPIOs,ALIM,0
+Datasets/Dataset_GPIOs/dataset_ALIM_VITT_INDOTTO_perfect.csv,Dataset_GPIOs,ALIM,1
+Datasets/Dataset_GoldenBoys/300dataset_Alim_VITTIMA_AUTOINDOTT0.csv,Dataset_GoldenBoys,ALIM,0
+Datasets/Dataset_GoldenBoys/dataset 300 _INDOTTO_FINAL.csv,Dataset_GoldenBoys,ALIM,1
+Datasets/Dataset_HDMI/DST_ALIM_AUTOINDOTTO.csv,Dataset_HDMI,ALIM,0
+Datasets/Dataset_HDMI/DST_ALIM_INDOTTO.csv,Dataset_HDMI,ALIM,1
+Datasets/Dataset_PICOs/dataset_ALIM_VITT_AUTO.csv,Dataset_PICOs,ALIM,0
+Datasets/Dataset_PICOs/dataset_ALIM_VITT_INDOTTO.csv,Dataset_PICOs,ALIM,1

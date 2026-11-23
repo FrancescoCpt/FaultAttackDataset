@@ -1,0 +1,36 @@
+{
+  "labels": {
+    "0": "autoindotto",
+    "1": "indotto"
+  },
+  "input_shape": [
+    null,
+    1,
+    3199,
+    1
+  ],
+  "output_shape": [
+    null,
+    2
+  ],
+  "feature_count": 3199,
+  "notes": [
+    "Input Keras: (batch, 1, n_features, 1).",
+    "Architettura senza Dense: classificatore finale implementato con Conv2D.",
+    "Sample weights bilanciano dominio e classe per evitare che 7Nani o altri dataset dominino.",
+    "Default finale: split stratificato per dominio, quindi tutti i domini sono visti in training."
+  ],
+  "args": {
+    "dataset": "elaboration_outputs/merged_aligned_crop_derivative_datasetstd.csv",
+    "output_dir": "training_outputs",
+    "epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "validation_size": 0.2,
+    "random_state": 42,
+    "skip_lodo": true,
+    "final_validation_datasets": "Dataset_7Nani__ALIM,Dataset_GPIOs__ALIM",
+    "final_validation_mode": "domain-stratified",
+    "representative_samples": 256
+  }
+}

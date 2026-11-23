@@ -1,0 +1,5 @@
+{
+  "balanced_accuracy": 0.8372926878399248,
+  "auc": 0.9221244880145034,
+  "report": "              precision    recall  f1-score   support\n\n autoindotto       0.87      0.78      0.83       265\n     indotto       0.81      0.89      0.85       281\n\n    accuracy                           0.84       546\n   macro avg       0.84      0.84      0.84       546\nweighted avg       0.84      0.84      0.84       546\n"
+}

@@ -1,0 +1,16 @@
+{
+  "accuracy": 0.8388278388278388,
+  "balanced_accuracy": 0.8372926878399248,
+  "confusion_matrix": [
+    [
+      208,
+      57
+    ],
+    [
+      31,
+      250
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n autoindotto       0.87      0.78      0.83       265\n     indotto       0.81      0.89      0.85       281\n\n    accuracy                           0.84       546\n   macro avg       0.84      0.84      0.84       546\nweighted avg       0.84      0.84      0.84       546\n",
+  "auc": 0.9221244880145034
+}
