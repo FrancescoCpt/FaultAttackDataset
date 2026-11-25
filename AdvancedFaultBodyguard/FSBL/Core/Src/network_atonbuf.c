@@ -1,3 +1,5 @@
+#include "bodyguard_ml_config.h"
+#if BODYGUARD_ML_BACKEND == BODYGUARD_ML_NPU
 #include "network_atonbuf.h"
 
 #include <string.h>
@@ -18,3 +20,5 @@ void NetworkAtonbuf_Load(void)
 
   SCB_CleanInvalidateDCache_by_Addr((uint32_t *)start, (int32_t)(end - start));
 }
+
+#endif /* selected ML backend */

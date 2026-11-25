@@ -3,12 +3,13 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "bodyguard_ml_config.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define NN_PREPROCESS_ADC_SAMPLES          10000u
+#define NN_PREPROCESS_ADC_SAMPLES          BODYGUARD_ADC_SAMPLES
 #define NN_PREPROCESS_BASELINE_SAMPLES       300u
 #define NN_PREPROCESS_EVENT_SEARCH_START       0u
 #define NN_PREPROCESS_EVENT_SEARCH_END      1200u

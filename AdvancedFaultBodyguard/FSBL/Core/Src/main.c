@@ -45,6 +45,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+#include "bodyguard_ml.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,7 +68,7 @@ typedef enum {
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define NUM_SAMPLES 6000
+#define NUM_SAMPLES BODYGUARD_ADC_SAMPLES
 
 /*
  * PRE_TRIGGER_GUARD
@@ -141,6 +142,11 @@ volatile uint8_t rx_indice = 0;
 
 uint32_t last_blink_time = 0;
 
+/* Inspect these variables in CubeIDE Live Expressions. */
+volatile bodyguard_ml_result_t g_ml_result;
+volatile int32_t g_ml_status = BODYGUARD_ML_NOT_READY;
+volatile uint32_t g_ml_count = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -207,6 +213,8 @@ int main(void)
 	MX_RAMCFG_Init();
 	SystemIsolation_Config();
 	/* USER CODE BEGIN 2 */
+	g_ml_status = BodyguardML_Init();
+	if (g_ml_status != BODYGUARD_ML_OK) { Error_Handler(); }
 	HAL_UART_Receive_IT(&hlpuart1, &rx_byte, 1);	// si mette pronto in attesa che arrivino caratteri
 	HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_SET);
@@ -314,6 +322,15 @@ int main(void)
 			}
 
 
+			bodyguard_ml_result_t result;
+#if BODYGUARD_ML_ADC_CHANNEL == 1
+			g_ml_status = BodyguardML_RunADC(uart_tx_buf2, &result);
+#else
+			g_ml_status = BodyguardML_RunADC(uart_tx_buf, &result);
+#endif
+			g_ml_result = result;
+			if (g_ml_status == BODYGUARD_ML_OK) { ++g_ml_count; }
+
 			char c = 'E';
 			HAL_UART_Transmit(&hlpuart1, (uint8_t *)&c, 1, HAL_MAX_DELAY);
 
@@ -321,7 +338,7 @@ int main(void)
 			flag_uart = 0;
 			prima_acq = 1;
 
-			state = WAIT_FETCH1;
+			state = IDLE;
 
 
 			break;

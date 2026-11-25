@@ -1,0 +1,190 @@
+ST Edge AI Core v2.2.0-20266 2adc00962
+Created date          : 2026-11-23 16:26:07
+Parameters            : generate --target stm32n6 --name network_cpu --c-api legacy --model AdvancedFaultBodyguard/NetworkTraining/training_outputs/final_model_int8.tflite --workspace /tmp/afb_cpu_ws --output /tmp/afb_cpu_gen
+
+Exec/report summary (generate)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+model file         :   /Users/francescocaputo/STM32CubeIDE/Cybersecurity/AdvancedFaultBodyguard/NetworkTraining/training_outputs/final_model_int8.tflite   
+type               :   tflite                                                                                                                              
+c_name             :   network_cpu                                                                                                                         
+compression        :   lossless                                                                                                                            
+options            :   allocate-inputs, allocate-outputs                                                                                                   
+optimization       :   balanced                                                                                                                            
+target/series      :   stm32n6                                                                                                                             
+workspace dir      :   /tmp/afb_cpu_ws                                                                                                                     
+output dir         :   /tmp/afb_cpu_gen                                                                                                                    
+model_fmt          :   ss/sa per channel                                                                                                                   
+model_name         :   final_model_int8                                                                                                                    
+model_hash         :   0xf8f1c7cdaa4e77fc1e22d6c5e7bd7c65                                                                                                  
+params #           :   18,074 items (17.89 KiB)                                                                                                            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+input 1/1          :   'serving_default_trace0', int8(1x1x3199x1), 3.12 KBytes, QLinear(0.255109578,-1,int8), activations                                  
+output 1/1         :   'nl_9', int8(1x2), 2 Bytes, QLinear(0.003906250,-128,int8), activations                                                             
+macc               :   2,073,712                                                                                                                           
+weights (ro)       :   18,320 B (17.89 KiB) (1 segment) / -53,976(-74.7%) vs float model                                                                   
+activations (rw)   :   32,020 B (31.27 KiB) (1 segment) *                                                                                                  
+ram (total)        :   32,020 B (31.27 KiB) = 32,020 + 0 + 0                                                                                               
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers are allocated in the activations buffer
+
+Model name - final_model_int8
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+m_id   layer (type,original)              oshape                 param/size           macc             connected to   | c_size          c_macc              c_type                
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+0      serving_default_trace0 (Input, )   [b:1,h:1,w:3199,c:1]                                                        | +104(+100.0%)   +115,208(+100.0%)   Conv2D_[0]            
+       conv2d_0 (Conv2D, CONV_2D)         [b:1,h:1,w:1600,c:8]   80/104            115,208   serving_default_trace0   | -104(-100.0%)   -115,208(-100.0%)   
+       nl_0_nl (Nonlinearity, CONV_2D)    [b:1,h:1,w:1600,c:8]                      12,800                 conv2d_0   |                 -12,800(-100.0%)    
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+1      conv2d_1 (Conv2D, CONV_2D)         [b:1,h:1,w:800,c:16]   912/960           716,816                  nl_0_nl   |                                     Conv2D_[1]            
+       nl_1_nl (Nonlinearity, CONV_2D)    [b:1,h:1,w:800,c:16]                      12,800                 conv2d_1   |                 -12,800(-100.0%)    
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+2      conv2d_2 (Conv2D, CONV_2D)         [b:1,h:1,w:400,c:24]   1,944/2,016       768,024                  nl_1_nl   |                                     Pad_/Conv2D_[2, 3]    
+       nl_2_nl (Nonlinearity, CONV_2D)    [b:1,h:1,w:400,c:24]                       9,600                 conv2d_2   |                 -9,600(-100.0%)     
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+3      conv2d_3 (Conv2D, CONV_2D)         [b:1,h:1,w:200,c:32]   2,336/2,432       460,832                  nl_2_nl   |                                     Pad_/Conv2D_[4, 5]    
+       nl_3_nl (Nonlinearity, CONV_2D)    [b:1,h:1,w:200,c:32]                       6,400                 conv2d_3   |                 -6,400(-100.0%)     
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+4      conv2d_4 (Conv2D, CONV_2D)         [b:1,h:1,w:1,c:2]      12,802/12,808      12,802                  nl_3_nl   |                                     Conv2D_[6]            
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+8      reshape_8 (Reshape, RESHAPE)       [b:1,c:2]                                                        conv2d_4   |                                     
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+9      nl_9 (Nonlinearity, SOFTMAX)       [b:1,c:2]                                     30                reshape_8   |                                     Nonlinearity_[o][7]   
+------ ---------------------------------- ---------------------- --------------- --------- ------------------------ --- --------------- ------------------- --------------------- 
+model/c-model: macc=2,115,312/2,073,712 -41,600(-2.0%) weights=18,320/18,320  activations=--/32,020 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : final_model_int8
+c-name                : network_cpu
+c-node #              : 8
+c-array #             : 25
+activations size      : 32020 (1 segment)
+weights size          : 18320 (1 segment)
+macc                  : 2073712
+inputs                : ['serving_default_trace0_output']
+outputs               : ['nl_9_output']
+
+C-Arrays (25)
+------ ------------------------------- ------------- ------------------------- ----------- --------- 
+c_id   name (*_array)                  item/size     domain/mem-pool           c-type      comment   
+------ ------------------------------- ------------- ------------------------- ----------- --------- 
+0      conv2d_0_bias                   8/32          weights/weights           const s32             
+1      conv2d_0_output                 12800/12800   activations/**default**   s8                    
+2      conv2d_0_scratch0               128/128       activations/**default**   s8                    
+3      conv2d_0_weights                72/72         weights/weights           const s8              
+4      conv2d_1_bias                   16/64         weights/weights           const s32             
+5      conv2d_1_output                 12800/12800   activations/**default**   s8                    
+6      conv2d_1_scratch0               384/384       activations/**default**   s8                    
+7      conv2d_1_weights                896/896       weights/weights           const s8              
+8      conv2d_2_bias                   24/96         weights/weights           const s32             
+9      conv2d_2_output                 9600/9600     activations/**default**   s8                    
+10     conv2d_2_pad_before_output      12864/12864   activations/**default**   s8                    
+11     conv2d_2_scratch0               512/512       activations/**default**   s8                    
+12     conv2d_2_weights                1920/1920     weights/weights           const s8              
+13     conv2d_3_bias                   32/128        weights/weights           const s32             
+14     conv2d_3_output                 6400/6400     activations/**default**   s8                    
+15     conv2d_3_pad_before_output      9648/9648     activations/**default**   s8                    
+16     conv2d_3_scratch0               576/576       activations/**default**   s8                    
+17     conv2d_3_weights                2304/2304     weights/weights           const s8              
+18     conv2d_4_bias                   2/8           weights/weights           const s32             
+19     conv2d_4_output                 2/2           activations/**default**   s8                    
+20     conv2d_4_scratch0               25616/25616   activations/**default**   s8                    
+21     conv2d_4_weights                12800/12800   weights/weights           const s8              
+22     nl_9_output                     2/2           activations/**default**   s8          /output   
+23     nl_9_scratch0                   256/1024      activations/**default**   s32                   
+24     serving_default_trace0_output   3199/3199     activations/**default**   s8          /input    
+------ ------------------------------- ------------- ------------------------- ----------- --------- 
+
+C-Layers (8)
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+c_id   name (*_layer)        id   layer_type      macc     rom     tensors                            shape (array id)        
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+0      conv2d_0              0    Conv2D          115208   104     I: serving_default_trace0_output   int8(1x1x3199x1) (24)   
+                                                                   S: conv2d_0_scratch0                                       
+                                                                   W: conv2d_0_weights                int8(8x1x9x1) (3)       
+                                                                   W: conv2d_0_bias                   int32(8) (0)            
+                                                                   O: conv2d_0_output                 int8(1x1x1600x8) (1)    
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+1      conv2d_1              1    Conv2D          716816   960     I: conv2d_0_output                 int8(1x1x1600x8) (1)    
+                                                                   S: conv2d_1_scratch0                                       
+                                                                   W: conv2d_1_weights                int8(16x1x7x8) (7)      
+                                                                   W: conv2d_1_bias                   int32(16) (4)           
+                                                                   O: conv2d_1_output                 int8(1x1x800x16) (5)    
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+2      conv2d_2_pad_before   2    Pad             0        0       I: conv2d_1_output                 int8(1x1x800x16) (5)    
+                                                                   O: conv2d_2_pad_before_output      int8(1x1x804x16) (10)   
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+3      conv2d_2              2    Conv2D          768024   2016    I: conv2d_2_pad_before_output      int8(1x1x804x16) (10)   
+                                                                   S: conv2d_2_scratch0                                       
+                                                                   W: conv2d_2_weights                int8(24x1x5x16) (12)    
+                                                                   W: conv2d_2_bias                   int32(24) (8)           
+                                                                   O: conv2d_2_output                 int8(1x1x400x24) (9)    
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+4      conv2d_3_pad_before   3    Pad             0        0       I: conv2d_2_output                 int8(1x1x400x24) (9)    
+                                                                   O: conv2d_3_pad_before_output      int8(1x1x402x24) (15)   
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+5      conv2d_3              3    Conv2D          460832   2432    I: conv2d_3_pad_before_output      int8(1x1x402x24) (15)   
+                                                                   S: conv2d_3_scratch0                                       
+                                                                   W: conv2d_3_weights                int8(32x1x3x24) (17)    
+                                                                   W: conv2d_3_bias                   int32(32) (13)          
+                                                                   O: conv2d_3_output                 int8(1x1x200x32) (14)   
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+6      conv2d_4              4    Conv2D          12802    12808   I: conv2d_3_output                 int8(1x1x200x32) (14)   
+                                                                   S: conv2d_4_scratch0                                       
+                                                                   W: conv2d_4_weights                int8(2x1x200x32) (21)   
+                                                                   W: conv2d_4_bias                   int32(2) (18)           
+                                                                   O: conv2d_4_output                 int8(1x1x1x2) (19)      
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+7      nl_9                  9    Nonlinearity    30       0       I: conv2d_4_output                 int8(1x1x1x2) (19)      
+                                                                   S: nl_9_scratch0                                           
+                                                                   O: nl_9_output                     int8(1x2) (22)          
+------ --------------------- ---- --------------- -------- ------- ---------------------------------- ----------------------- 
+
+
+
+Number of operations per c-layer
+------- ------ --------------------------- ----------- ------------ 
+c_id    m_id   name (type)                         #op         type 
+------- ------ --------------------------- ----------- ------------ 
+0       0      conv2d_0 (Conv2D)               115,208   smul_s8_s8 
+1       1      conv2d_1 (Conv2D)               716,816   smul_s8_s8 
+2       2      conv2d_2_pad_before (Pad)             0   smul_s8_s8 
+3       2      conv2d_2 (Conv2D)               768,024   smul_s8_s8 
+4       3      conv2d_3_pad_before (Pad)             0   smul_s8_s8 
+5       3      conv2d_3 (Conv2D)               460,832   smul_s8_s8 
+6       4      conv2d_4 (Conv2D)                12,802   smul_s8_s8 
+7       9      nl_9 (Nonlinearity)                  30     op_s8_s8 
+------- ------ --------------------------- ----------- ------------ 
+total                                        2,073,712 
+
+Number of operation types
+---------------- ----------- ----------- 
+operation type             #           % 
+---------------- ----------- ----------- 
+smul_s8_s8         2,073,682      100.0% 
+op_s8_s8                  30        0.0% 
+
+Complexity report (model)
+------ ------------------------ ------------------------- ------------------------- -------- 
+m_id   name                     c_macc                    c_rom                     c_id     
+------ ------------------------ ------------------------- ------------------------- -------- 
+0      serving_default_trace0   |||                5.6%   |                  0.6%   [0]      
+1      conv2d_1                 ||||||||||||||    34.6%   ||                 5.2%   [1]      
+2      conv2d_2                 ||||||||||||||||  37.0%   |||               11.0%   [2, 3]   
+3      conv2d_3                 ||||||||||        22.2%   |||               13.3%   [4, 5]   
+4      conv2d_4                 |                  0.6%   ||||||||||||||||  69.9%   [6]      
+9      nl_9                     |                  0.0%   |                  0.0%   [7]      
+------ ------------------------ ------------------------- ------------------------- -------- 
+macc=2,073,712 weights=18,320 act=32,020 ram_io=0
+
+Generated files (7)
+-------------------------------------------- 
+/tmp/afb_cpu_gen/network_cpu_data_params.h   
+/tmp/afb_cpu_gen/network_cpu_data_params.c   
+/tmp/afb_cpu_gen/network_cpu_data.h          
+/tmp/afb_cpu_gen/network_cpu_data.c          
+/tmp/afb_cpu_gen/network_cpu_config.h        
+/tmp/afb_cpu_gen/network_cpu.h               
+/tmp/afb_cpu_gen/network_cpu.c               
