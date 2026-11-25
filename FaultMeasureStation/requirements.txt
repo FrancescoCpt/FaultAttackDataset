@@ -2,3 +2,4 @@ numpy
 PySerial
 matplotlib
 pyvisa
+h5py

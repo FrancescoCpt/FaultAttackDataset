@@ -1,0 +1,7 @@
+Percorso selezionato: /Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1
+/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1/K1V1/Autoinduced/bodyguard_adc1.csv
+/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1/K1V1/Induced/bodyguard_adc1.csv
+/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1/K2V2/Autoinduced/bodyguard_adc1.csv
+/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1/K2V2/Induced/bodyguard_adc1.csv
+/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1/K3V3/Autoinduced/bodyguard_adc1.csv
+/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B1/K3V3/Induced/bodyguard_adc1.csv
