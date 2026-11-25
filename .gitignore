@@ -63,4 +63,4 @@ scope_ch2.csv
 scope_ch3.csv
 
 # Ignore compressed files.
-.zip
+*.zip
