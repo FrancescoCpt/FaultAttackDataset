@@ -1,0 +1,601 @@
+file,run_id,classe,minimo_originale,offset_richiesto,stato,motivo,inclusa_plot
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run001,autoindotto,1814,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run002,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run003,autoindotto,4412,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run004,autoindotto,4424,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run005,autoindotto,4429,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run006,autoindotto,4417,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run007,autoindotto,4436,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run008,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run009,autoindotto,4429,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run010,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run011,autoindotto,4343,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run012,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run013,autoindotto,4408,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run014,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run015,autoindotto,4432,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run016,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run017,autoindotto,4326,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run018,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run019,autoindotto,4421,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run020,autoindotto,4375,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run021,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run022,autoindotto,4432,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run023,autoindotto,4403,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run024,autoindotto,4430,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run025,autoindotto,4425,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run026,autoindotto,4399,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run027,autoindotto,4432,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run028,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run029,autoindotto,4423,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run030,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run031,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run032,autoindotto,4430,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run033,autoindotto,4419,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run034,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run035,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run036,autoindotto,4429,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run037,autoindotto,4428,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run038,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run039,autoindotto,4430,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run040,autoindotto,4402,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run041,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run042,autoindotto,4425,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run043,autoindotto,4415,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run044,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run045,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run046,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run047,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run048,autoindotto,4425,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run049,autoindotto,4421,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run050,autoindotto,4421,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run051,autoindotto,4435,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run052,autoindotto,4423,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run053,autoindotto,4393,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run054,autoindotto,4422,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run055,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run056,autoindotto,4368,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run057,autoindotto,4408,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run058,autoindotto,4421,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run059,autoindotto,4405,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run060,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run061,autoindotto,4430,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run062,autoindotto,4380,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run063,autoindotto,4404,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run064,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run065,autoindotto,4424,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run066,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run067,autoindotto,4383,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run068,autoindotto,4428,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run069,autoindotto,4429,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run070,autoindotto,4429,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run071,autoindotto,4419,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run072,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run073,autoindotto,4436,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run074,autoindotto,4432,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run075,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run076,autoindotto,4302,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run077,autoindotto,4052,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run078,autoindotto,4419,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run079,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run080,autoindotto,4434,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run081,autoindotto,4428,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run082,autoindotto,4435,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run083,autoindotto,4378,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run084,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run085,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run086,autoindotto,4434,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run087,autoindotto,4434,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run088,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run089,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run090,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run091,autoindotto,4422,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run092,autoindotto,4431,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run093,autoindotto,4428,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run094,autoindotto,4427,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run095,autoindotto,4388,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run096,autoindotto,4370,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run097,autoindotto,4426,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run098,autoindotto,4429,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run099,autoindotto,4363,-5,corretta,,True
+K1V3/Autoinduced/bodyguard_adc1.csv,20261117_183454_run100,autoindotto,4412,-5,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run001,indotto,4389,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run002,indotto,3936,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run003,indotto,4411,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run004,indotto,4388,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run005,indotto,2846,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run006,indotto,2433,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run007,indotto,4424,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run008,indotto,4389,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run010,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run011,indotto,4388,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run012,indotto,4211,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run013,indotto,2135,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run014,indotto,4373,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run015,indotto,4388,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run016,indotto,4426,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run017,indotto,4354,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run018,indotto,4394,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run019,indotto,4393,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run021,indotto,4381,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run023,indotto,2459,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run024,indotto,4362,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run026,indotto,4392,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run027,indotto,4398,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run028,indotto,4395,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run029,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run030,indotto,2734,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run032,indotto,4359,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run033,indotto,3166,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run035,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run036,indotto,4391,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run038,indotto,4382,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run039,indotto,4416,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run040,indotto,3509,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run041,indotto,4395,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run042,indotto,4398,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run043,indotto,4419,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run044,indotto,3913,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run045,indotto,4392,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run046,indotto,3903,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run047,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run048,indotto,4394,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run049,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run050,indotto,4388,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run051,indotto,4361,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run052,indotto,4364,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run053,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run055,indotto,4408,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run056,indotto,2786,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run057,indotto,4112,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run060,indotto,4388,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run061,indotto,1580,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run062,indotto,4357,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run063,indotto,4384,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run065,indotto,1921,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run066,indotto,4396,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run069,indotto,4382,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run070,indotto,4400,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run071,indotto,4388,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run072,indotto,4415,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run073,indotto,4401,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run074,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run075,indotto,333,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run076,indotto,3265,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run078,indotto,4374,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run079,indotto,4384,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run080,indotto,4385,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run081,indotto,4360,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run082,indotto,4396,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run083,indotto,4384,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run084,indotto,4376,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run085,indotto,666,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run086,indotto,4367,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run087,indotto,2987,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run088,indotto,4387,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run089,indotto,4382,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run090,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run091,indotto,4351,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run092,indotto,4398,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run093,indotto,4362,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run094,indotto,4396,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run095,indotto,1129,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run096,indotto,4378,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run097,indotto,3699,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run100,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run101,indotto,4395,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run102,indotto,4389,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run103,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run105,indotto,4398,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run107,indotto,4414,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run108,indotto,3453,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run109,indotto,4399,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run110,indotto,851,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run111,indotto,4362,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run112,indotto,3209,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run113,indotto,4430,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run114,indotto,4380,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run116,indotto,4368,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run117,indotto,3875,26,corretta,,True
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run118,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K1V3/Induced/bodyguard_adc1.csv,20261117_184945_run119,indotto,2891,26,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run001,autoindotto,3003,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run002,autoindotto,4430,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run003,autoindotto,4406,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run004,autoindotto,4418,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run005,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run006,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run007,autoindotto,4413,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run008,autoindotto,4393,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run009,autoindotto,4436,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run011,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run012,autoindotto,4431,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run013,autoindotto,4405,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run014,autoindotto,4392,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run015,autoindotto,4140,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run016,autoindotto,4423,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run017,autoindotto,4405,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run018,autoindotto,4430,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run019,autoindotto,4423,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run020,autoindotto,4354,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run021,autoindotto,4329,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run022,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run023,autoindotto,4411,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run024,autoindotto,4403,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run025,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run026,autoindotto,3407,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run027,autoindotto,4393,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run028,autoindotto,4423,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run029,autoindotto,4411,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run030,autoindotto,4410,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run031,autoindotto,4426,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run032,autoindotto,4422,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run033,autoindotto,4398,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run034,autoindotto,4345,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run035,autoindotto,4410,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run036,autoindotto,4399,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run037,autoindotto,4424,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run038,autoindotto,4351,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run039,autoindotto,4341,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run040,autoindotto,4384,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run041,autoindotto,4380,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run042,autoindotto,4393,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run043,autoindotto,4410,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run044,autoindotto,4430,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run045,autoindotto,4423,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run046,autoindotto,4402,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run047,autoindotto,4407,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run048,autoindotto,4390,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run049,autoindotto,4350,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run050,autoindotto,4407,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run051,autoindotto,4393,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run052,autoindotto,4414,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run053,autoindotto,4346,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run054,autoindotto,4387,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run055,autoindotto,4407,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run056,autoindotto,4378,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run057,autoindotto,4395,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run058,autoindotto,4396,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run059,autoindotto,4283,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run060,autoindotto,4410,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run061,autoindotto,4420,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run062,autoindotto,4407,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run063,autoindotto,4375,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run064,autoindotto,4425,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run065,autoindotto,4388,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run066,autoindotto,4391,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run067,autoindotto,4393,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run068,autoindotto,,-5,inalterata_non_elaborabile,plateau finale alto assente,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run070,autoindotto,4427,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run071,autoindotto,4368,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run072,autoindotto,4330,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run073,autoindotto,4418,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run074,autoindotto,4408,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run075,autoindotto,4422,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run076,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run077,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run078,autoindotto,4394,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run079,autoindotto,4416,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run080,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run081,autoindotto,4406,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run082,autoindotto,4422,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run083,autoindotto,4390,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run084,autoindotto,4423,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run085,autoindotto,4419,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run086,autoindotto,4320,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run087,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run088,autoindotto,4387,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run089,autoindotto,4393,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run090,autoindotto,4381,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run091,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run092,autoindotto,4292,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run093,autoindotto,4421,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run094,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run095,autoindotto,4419,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run096,autoindotto,4419,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run097,autoindotto,4379,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run098,autoindotto,4391,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run099,autoindotto,4371,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run100,autoindotto,4407,-5,corretta,,True
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run101,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Autoinduced/bodyguard_adc1.csv,20261117_174159_run102,autoindotto,4391,-5,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run001,indotto,4385,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run002,indotto,2129,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run003,indotto,4377,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run004,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run005,indotto,4406,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run007,indotto,4375,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run008,indotto,4348,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run011,indotto,3616,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run012,indotto,4398,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run013,indotto,4399,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run014,indotto,317,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run015,indotto,3799,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run016,indotto,947,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run017,indotto,4373,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run018,indotto,4378,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run019,indotto,4388,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run020,indotto,4384,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run021,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run022,indotto,4386,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run023,indotto,4414,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run024,indotto,4397,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run027,indotto,4307,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run028,indotto,2168,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run030,indotto,4391,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run031,indotto,4243,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run033,indotto,4397,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run035,indotto,2805,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run036,indotto,4432,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run037,indotto,4394,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run038,indotto,4404,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run041,indotto,4393,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run042,indotto,4218,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run043,indotto,4365,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run044,indotto,4404,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run045,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run046,indotto,4374,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run047,indotto,4386,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run048,indotto,4385,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run049,indotto,4369,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run050,indotto,4390,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run051,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run052,indotto,4378,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run053,indotto,4414,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run054,indotto,4294,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run055,indotto,4383,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run056,indotto,3949,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run057,indotto,4388,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run058,indotto,4403,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run059,indotto,3554,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run060,indotto,4395,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run061,indotto,4377,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run062,indotto,4398,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run063,indotto,4396,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run064,indotto,4394,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run065,indotto,4379,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run067,indotto,4394,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run068,indotto,4390,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run069,indotto,4411,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run070,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run071,indotto,4372,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run072,indotto,4381,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run073,indotto,1930,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run074,indotto,4387,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run075,indotto,4396,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run076,indotto,1838,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run077,indotto,4365,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run078,indotto,3018,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run079,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run081,indotto,3906,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run082,indotto,1375,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run083,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run084,indotto,4407,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run085,indotto,4391,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run086,indotto,317,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run087,indotto,4400,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run088,indotto,4385,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run089,indotto,4395,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run090,indotto,4401,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run091,indotto,4386,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run092,indotto,4413,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run093,indotto,4382,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run095,indotto,4367,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run099,indotto,4374,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run100,indotto,4354,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run101,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run105,indotto,4400,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run106,indotto,4391,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run108,indotto,4394,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run109,indotto,4389,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run110,indotto,4422,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run111,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run112,indotto,4369,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run113,indotto,3596,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run114,indotto,4384,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run115,indotto,4391,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run116,indotto,4357,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run117,indotto,4390,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run118,indotto,4416,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run119,indotto,4391,26,corretta,,True
+K2V1/Induced/bodyguard_adc1.csv,20261117_175744_run122,indotto,1102,26,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_162757_run001,autoindotto,4344,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run001,autoindotto,4413,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run002,autoindotto,947,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run003,autoindotto,4430,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run004,autoindotto,4426,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run005,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run006,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run007,autoindotto,4399,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run008,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run009,autoindotto,4390,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run010,autoindotto,4387,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run011,autoindotto,4424,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run012,autoindotto,4409,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run013,autoindotto,4428,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run014,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run015,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run016,autoindotto,4432,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run017,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run018,autoindotto,4430,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run019,autoindotto,4421,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run020,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run021,autoindotto,4421,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run022,autoindotto,4428,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run023,autoindotto,4426,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run024,autoindotto,4336,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run025,autoindotto,4424,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run026,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run027,autoindotto,4430,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run028,autoindotto,4405,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run029,autoindotto,4431,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run030,autoindotto,4424,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run031,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run032,autoindotto,4409,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run033,autoindotto,4421,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run034,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run035,autoindotto,4424,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run036,autoindotto,4209,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run037,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_163038_run038,autoindotto,4418,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run001,autoindotto,4430,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run002,autoindotto,4430,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run003,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run004,autoindotto,4431,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run005,autoindotto,4428,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run006,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run007,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run008,autoindotto,4424,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run009,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run010,autoindotto,4399,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run012,autoindotto,4420,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run013,autoindotto,4420,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run014,autoindotto,4516,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run015,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run016,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run017,autoindotto,4422,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run018,autoindotto,4418,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run019,autoindotto,4406,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run020,autoindotto,4426,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run021,autoindotto,4331,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run022,autoindotto,4409,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run023,autoindotto,4413,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run024,autoindotto,4412,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run025,autoindotto,4293,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run027,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run028,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run029,autoindotto,4421,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run030,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run031,autoindotto,4377,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run032,autoindotto,4419,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run033,autoindotto,4434,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run035,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run036,autoindotto,,-5,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run037,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run038,autoindotto,4418,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run039,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run040,autoindotto,4422,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run041,autoindotto,4421,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run042,autoindotto,4325,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run043,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run044,autoindotto,4317,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run045,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run046,autoindotto,4432,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run047,autoindotto,4409,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run048,autoindotto,4424,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run049,autoindotto,4425,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run050,autoindotto,4378,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run051,autoindotto,4420,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run052,autoindotto,4432,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run054,autoindotto,4416,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run056,autoindotto,4397,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run057,autoindotto,4421,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run058,autoindotto,4427,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run059,autoindotto,4422,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run060,autoindotto,4413,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run062,autoindotto,4428,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run064,autoindotto,4423,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run065,autoindotto,4426,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run066,autoindotto,4422,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run067,autoindotto,4422,-5,corretta,,True
+K3V2/Autoinduced/bodyguard_adc1.csv,20261117_164709_run068,autoindotto,4423,-5,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run001,indotto,4173,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run002,indotto,4411,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run003,indotto,3066,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run005,indotto,4381,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run006,indotto,4086,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run007,indotto,4186,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run009,indotto,4342,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run010,indotto,4371,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run012,indotto,299,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run014,indotto,4396,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run015,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run016,indotto,4031,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run017,indotto,2743,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run019,indotto,4269,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run020,indotto,4301,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run022,indotto,4426,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run023,indotto,310,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run025,indotto,4390,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run026,indotto,3395,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run027,indotto,4383,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run029,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run030,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run031,indotto,4420,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run032,indotto,4398,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run035,indotto,4348,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run037,indotto,1497,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run039,indotto,4398,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run040,indotto,4389,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run041,indotto,4373,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run042,indotto,4394,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run043,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run045,indotto,4422,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run046,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run048,indotto,4382,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run049,indotto,4389,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run050,indotto,4378,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run051,indotto,4368,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run052,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run053,indotto,3913,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run054,indotto,4391,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run056,indotto,4417,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run057,indotto,508,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run058,indotto,4036,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run059,indotto,4392,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run060,indotto,4403,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run062,indotto,4355,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run063,indotto,4361,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run064,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run065,indotto,4375,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run066,indotto,3522,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run067,indotto,4409,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run069,indotto,4322,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run070,indotto,4426,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run071,indotto,4357,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run072,indotto,4384,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run073,indotto,4387,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run074,indotto,3774,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run075,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run076,indotto,4385,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run077,indotto,4425,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run079,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run080,indotto,3660,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run081,indotto,3676,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run082,indotto,4394,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run085,indotto,4387,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run086,indotto,1792,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run087,indotto,4391,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run090,indotto,4390,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run091,indotto,4382,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run092,indotto,2928,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run093,indotto,4413,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run094,indotto,4422,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run096,indotto,4396,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run097,indotto,4395,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run099,indotto,3659,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run100,indotto,4410,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run102,indotto,4392,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run104,indotto,4400,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run105,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run107,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run109,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run110,indotto,3798,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run111,indotto,4379,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run112,indotto,2732,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run113,indotto,4377,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run114,indotto,4379,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run116,indotto,4372,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run117,indotto,4396,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run118,indotto,4397,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run119,indotto,4349,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run123,indotto,3964,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run125,indotto,,26,inalterata_non_elaborabile,campioni ADC non validi,False
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run126,indotto,4408,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run127,indotto,4409,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run128,indotto,3397,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run129,indotto,2713,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run130,indotto,4390,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run131,indotto,4370,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run132,indotto,4402,26,corretta,,True
+K3V2/Induced/bodyguard_adc1.csv,20261117_170304_run133,indotto,4392,26,corretta,,True

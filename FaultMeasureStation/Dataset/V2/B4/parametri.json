@@ -1,0 +1,27 @@
+{
+  "root": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4",
+  "output": "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V2/B4",
+  "window": [
+    -10,
+    10
+  ],
+  "profile": "smooth",
+  "ramp_samples": null,
+  "induced_offset": 26,
+  "autoinduced_offset": -5,
+  "write_csv": true,
+  "keep_unprocessable": true,
+  "plot_margin": 100,
+  "reset_search": 250,
+  "plateau_hold": 40,
+  "plateau_threshold": 245,
+  "min_depth": 8,
+  "files": [
+    "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4/K1V3/Autoinduced/bodyguard_adc1.csv",
+    "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4/K1V3/Induced/bodyguard_adc1.csv",
+    "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4/K2V1/Autoinduced/bodyguard_adc1.csv",
+    "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4/K2V1/Induced/bodyguard_adc1.csv",
+    "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4/K3V2/Autoinduced/bodyguard_adc1.csv",
+    "/Users/francescocaputo/STM32CubeIDE/Cybersecurity/FaultMeasureStation/Dataset/V1/B4/K3V2/Induced/bodyguard_adc1.csv"
+  ]
+}
