@@ -56,6 +56,7 @@ holding the time axis in seconds.
 import argparse
 import csv
 import os
+import subprocess
 import sys
 import time
 from dataclasses import dataclass
@@ -1218,6 +1219,7 @@ def main() -> None:
             # enabled; on intermediate runs the figure would immediately be
             # closed anyway, and matplotlib.figure() itself costs ~50-200 ms.
             if cfg.show_plot and run == args.repeat:
+                subprocess.run(["say", "Ho finito di acquisire i dati"], check=False)
                 plot_traces(adc1, adc2, meta,
                             protocol_name=PROTO_NAMES[cfg.protocol],
                             sample_rate=cfg.sample_rate,
@@ -1227,6 +1229,8 @@ def main() -> None:
         close_ports(ports)
         if scope is not None:
             scope.close()
+
+    
 
 
 if __name__ == "__main__":

@@ -1,2 +1,0 @@
-run_id,source_row,status,reason,reset_us,fall_end_us,fall_us,low_v,high_v,threshold90_v,threshold10_v,sample_us,glitch_us,reset_minus_glitch_us,plot
-20261116_124346_run038,39,discard,CH2 a onda quadra: reset non confermato,118.63197335396896,119.00097034986891,0.36899699589994833,0.017168603870968104,3.1793409999999342,2.8631237603870376,0.3333858434838647,0.0032000000000002404,,,trace_00038.png

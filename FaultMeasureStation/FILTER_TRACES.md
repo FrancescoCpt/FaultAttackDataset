@@ -80,3 +80,41 @@ La sottocartella `filtered/` del report contiene copie di tutti i `scope_ch*.csv
 Le `discard` sono sempre escluse. Per ogni `review` che può ancora rientrare nel limite viene chiesto `s/n`, mostrando il motivo e il percorso del grafico se generato. Non viene assunta una risposta in caso di EOF: l'esportazione si interrompe e i report rimangono disponibili. Una review oltre il limite non viene richiesta né esportata.
 
 Si esportano solo Run ID presenti in **tutti** i CSV sorgente selezionati, per mantenere i canali e gli ADC allineati; gli ID mancanti sono marcati `missing_channel`. `selection.csv` registra per ogni trial la decisione (`keep`, `discard`, `review_accepted`, `review_rejected`, `limit`, `missing_channel`); `summary.json` contiene anche conteggio e Run ID esportati. Non si duplicano tracce per raggiungere N.
+
+## Filtro opzionale della dispersione prima del recovery
+
+```sh
+python3 filter_traces.py Induced_Traces --mode induced --filter-recovery --recovery-max-rms 5
+```
+
+Disattivato per default, disponibile solo con `--mode induced`. Usa ADC1 a
+5 MHz (`--adc-sample-rate`), con lo stesso rilevamento di `main.ipynb`:
+mediana mobile di 3 campioni, livello basso al percentile 10 fra 845–875 µs,
+livello alto mediano fra 895–900 µs, soglia al 90%, ricerca fra 850–900 µs,
+permanenza di 5 campioni ed escursione minima di 10 counts. Queste finestre
+assolute richiedono acquisizioni compatibili con quelle del notebook.
+
+Allinea per interpolazione le tracce non già scartate (incluse le review),
+calcola la mediana punto per punto e scarta quelle con distanza RMS dalla
+mediana superiore a `--recovery-max-rms` (default 5 conteggi ADC) nella
+finestra `--recovery-window-us -20 0`. Soglie più basse sono più selettive;
+5 è una soglia iniziale configurabile, non una calibrazione automatica.
+Il confronto usa solo la classe indotta, in un singolo passaggio, prima del
+limite `--max-good` e delle decisioni manuali sulle review.
+
+ADC1 mancante per un ID, recovery non rilevabile o finestra incompleta
+comportano scarto con motivo esplicito. Con meno di tre recovery validi il
+confronto RMS non viene applicato e le tracce valide richiedono review.
+Il file ADC1 assente interrompe il comando prima della creazione dei report.
+Le review che superano il filtro restano review.
+
+`results.csv` riporta `adc_recovery_us`, `recovery_rms_counts`, soglia e
+classificazione precedente; `summary.json` conserva impostazioni e numero
+di tracce di riferimento. L'RMS è visibile anche nella tabella HTML.
+I grafici CH2/CH3 esistenti descrivono il primo stadio, non il confronto ADC.
+I campioni esportati non vengono smussati o alterati: lo scarto esclude
+l'intero Run ID da tutti i canali. Nessun dataset originale viene modificato.
+
+La banda ±2σ del notebook misura dispersione, non l'intervallo di confidenza
+della media. La selezione modifica la popolazione osservata: confrontare
+anche il risultato senza filtro e riportare soglia e numero di scarti.

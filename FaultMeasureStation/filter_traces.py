@@ -171,6 +171,88 @@ def classify(t, y, cfg, mode, ch3=None):
     return r
 
 
+def adc_recovery(y, sample_rate):
+    """Recovery in µs, using the detection settings of main.ipynb."""
+    t = np.arange(len(y)) * (1e6 / sample_rate)
+    # Centered rolling median, min_periods=1, as in the notebook.
+    z = np.median(np.lib.stride_tricks.sliding_window_view(
+        np.pad(y, (1, 1), mode='edge'), 3), axis=1)
+    z[0], z[-1] = np.median(y[:2]), np.median(y[-2:])
+    low = (t >= 845) & (t <= 875)
+    high = (t >= 895) & (t <= 900)
+    if not low.any() or not high.any():
+        raise ValueError('Finestre ADC recovery non disponibili')
+    v_low = np.percentile(z[low], 10)
+    excursion = np.median(z[high]) - v_low
+    if excursion < 10:
+        raise ValueError('Escursione ADC recovery inferiore a 10 counts')
+    level = v_low + .90 * excursion
+    for i in np.flatnonzero((z[:-1] < level) & (z[1:] >= level)) + 1:
+        if 850 <= t[i] <= 900 and i + 5 <= len(z) and np.all(z[i:i+5] >= level):
+            return t, crossing(t, z, i, level)
+    raise ValueError('Recovery ADC non trovato')
+
+
+def filter_recovery(folder, rows, sample_rate, window, max_rms):
+    """One-pass RMS distance from the induced cohort's pointwise median.
+
+    Only the aligned window is retained in memory. Raw exported samples are
+    unchanged. Existing discards never participate in the reference cohort.
+    """
+    candidates = {r['run_id']: r for r in rows if r['status'] != 'discard'}
+    aligned, valid_rows, seen = [], [], set()
+    dt = 1e6 / sample_rate
+    grid = np.arange(np.ceil(window[0]/dt), np.floor(window[1]/dt)+1) * dt
+    with (folder / 'bodyguard_adc1.csv').open(newline='') as f:
+        for values in csv.reader(f):
+            if not values or values[0] == 'TIME':
+                continue
+            rid = values[0]
+            if rid not in candidates:
+                continue
+            seen.add(rid)
+            r = candidates[rid]
+            r['pre_recovery_status'], r['pre_recovery_reason'] = r['status'], r['reason']
+            try:
+                y = np.asarray(values[1:], float)
+                if len(y) < 3 or not np.all(np.isfinite(y)):
+                    raise ValueError('Traccia ADC insufficiente o non finita')
+                t, recovery = adc_recovery(y, sample_rate)
+                r['adc_recovery_us'] = recovery
+                if recovery + window[0] < t[0] or recovery + window[1] > t[-1]:
+                    raise ValueError('Copertura ADC della finestra incompleta')
+                aligned.append(np.interp(grid + recovery, t, y))
+                valid_rows.append(r)
+            except ValueError as e:
+                r.update(status='discard', reason='Filtro recovery: ' + str(e))
+    for rid in candidates.keys() - seen:
+        candidates[rid].update(status='discard', reason='Filtro recovery: ADC1 mancante')
+    result = dict(enabled=True, sample_rate_hz=sample_rate, window_us=list(window),
+                  max_rms_counts=max_rms, reference_count=len(valid_rows),
+                  reference='pointwise median of non-discard induced traces',
+                  detection=dict(low_window_us=[845,875], high_window_us=[895,900],
+                                 search_window_us=[850,900], fraction=.9,
+                                 smooth_samples=3, hold_samples=5, min_excursion=10))
+    if len(valid_rows) < 3:
+        # Do not invent a reference from one or two traces; require manual review.
+        for r in valid_rows:
+            r.update(status='review', reason=r['reason'] +
+                     '; filtro recovery non applicato: meno di 3 tracce valide')
+        result['applied'] = False
+        return result
+    matrix = np.asarray(aligned)
+    reference = np.median(matrix, axis=0)
+    scores = np.sqrt(np.mean((matrix-reference)**2, axis=1))
+    for r, score in zip(valid_rows, scores):
+        r['recovery_rms_counts'] = float(score)
+        r['recovery_max_rms_counts'] = max_rms
+        if score > max_rms:
+            r.update(status='discard', reason=f'Filtro recovery: RMS {score:.3f} > {max_rms:g} ADC counts')
+    result['applied'] = True
+    result['outliers'] = int(np.count_nonzero(scores > max_rms))
+    return result
+
+
 def plot(path, t, y, ch3, r, cfg):
     import matplotlib
     matplotlib.use('Agg')
@@ -276,6 +358,13 @@ def main(argv=None):
     p.add_argument('--out-dir',type=Path)
     p.add_argument('--max-good',type=int,default=100,help='Massimo numero di tracce esportate, comprese le review accettate')
     p.add_argument('--plots',type=int,default=20,help='Massimo grafici scarto/revisione; -1 per tutti, 0 nessuno')
+    p.add_argument('--filter-recovery', action='store_true',
+                   help='Filtra outlier ADC1 allineati al recovery (solo induced)')
+    p.add_argument('--recovery-max-rms', type=float, default=5.,
+                   help='Massima distanza RMS dalla mediana indotta [ADC counts]')
+    p.add_argument('--recovery-window-us', nargs=2, type=float, default=(-20., 0.),
+                   metavar=('START', 'END'), help='Finestra relativa al recovery [µs]')
+    p.add_argument('--adc-sample-rate', type=float, default=5e6, help='Campionamento ADC [Hz]')
     for k,v in asdict(Settings()).items():
         p.add_argument('--'+k.replace('_','-'),type=float,default=v)
     a=p.parse_args(argv)
@@ -284,6 +373,16 @@ def main(argv=None):
             or not 0<cfg.square_max_us<cfg.reset_min_us or cfg.low_hold_us<=0
             or cfg.min_amplitude_v<=0 or cfg.ch3_level<=cfg.ch3_hysteresis/2 or a.plots < -1 or a.max_good < 1):
         p.error('Soglie non valide')
+    if a.filter_recovery:
+        if a.mode != 'induced':
+            p.error('--filter-recovery richiede --mode induced')
+        if (not all(np.isfinite(v) for v in [a.adc_sample_rate, a.recovery_max_rms, *a.recovery_window_us])
+                or a.adc_sample_rate <= 0 or a.recovery_max_rms <= 0
+                or a.recovery_window_us[0] >= a.recovery_window_us[1]
+                or (a.recovery_window_us[1]-a.recovery_window_us[0])*a.adc_sample_rate/1e6 < 1):
+            p.error('Parametri recovery non validi')
+        if not (a.folder/'bodyguard_adc1.csv').is_file():
+            p.error('--filter-recovery richiede bodyguard_adc1.csv')
     ch2=CsvTraces(a.folder/'scope_ch2.csv')
     ch3=CsvTraces(a.folder/'scope_ch3.csv') if (a.folder/'scope_ch3.csv').exists() and a.mode=='induced' else None
     invalid_adc = adc_errors(a.folder)
@@ -315,8 +414,15 @@ def main(argv=None):
         rows.append(r)
         if r['status']!='keep':
             print(f"{r['status'].upper():7} {run_id}: {r['reason']}")
+    recovery_summary = dict(enabled=False)
+    if a.filter_recovery:
+        recovery_summary = filter_recovery(a.folder, rows, a.adc_sample_rate,
+                                           a.recovery_window_us, a.recovery_max_rms)
+        for r in rows:
+            if r['reason'].startswith('Filtro recovery:'):
+                print(f"{r['status'].upper():7} {r['run_id']}: {r['reason']}")
     counts=Counter(r['status'] for r in rows)
-    summary=dict(mode=a.mode,source=str(a.folder.resolve()),settings=asdict(cfg),total=len(rows),
+    summary=dict(recovery_filter=recovery_summary,mode=a.mode,source=str(a.folder.resolve()),settings=asdict(cfg),total=len(rows),
                  counts={k:counts[k] for k in ('keep','discard','review')},
                  percentages={k:100*counts[k]/len(rows) if rows else 0 for k in ('keep','discard','review')},
                  reasons=dict(Counter(r['reason'] for r in rows)),
@@ -333,9 +439,9 @@ def main(argv=None):
              '<p>Analisi non distruttiva. KEEP significa compatibilità con i criteri; la precedenza del glitch non dimostra causalità. REVIEW richiede verifica manuale.</p>',
              '<p>Soglie provvisorie configurabili; reset stimato all’inizio della discesa finale CH2 (90%).</p>',
              '<p><a href="results.csv">Tutti i risultati</a> · <a href="discard.csv">Scarti</a> · <a href="review.csv">Da verificare</a></p>',
-             '<table><tr><th>Run ID</th><th>Esito</th><th>Motivo</th><th>Discesa µs</th><th>Reset − glitch µs</th></tr>']
+             '<table><tr><th>Run ID</th><th>Esito</th><th>Motivo</th><th>Discesa µs</th><th>Reset − glitch µs</th><th>Recovery RMS ADC</th></tr>']
     for r in rows:
-        content.append('<tr>'+''.join('<td>'+html.escape(str(r.get(k,'')))+'</td>' for k in ('run_id','status','reason','fall_us','reset_minus_glitch_us'))+'</tr>')
+        content.append('<tr>'+''.join('<td>'+html.escape(str(r.get(k,'')))+'</td>' for k in ('run_id','status','reason','fall_us','reset_minus_glitch_us','recovery_rms_counts'))+'</tr>')
     content.append('</table><h2>Grafici degli scarti e dei casi da verificare</h2>')
     for r in rows:
         if 'plot' in r:
