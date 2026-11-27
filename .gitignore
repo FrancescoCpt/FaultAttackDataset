@@ -64,3 +64,5 @@ scope_ch3.csv
 
 # Ignore compressed files.
 *.zip
+
+filter_reports/

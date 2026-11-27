@@ -82,7 +82,7 @@ uint8_t rxIndex = 0;    			// Indice del buffer
 /* ===== Parametri AES-128 CBC: tre vettori casuali fissi, senza padding ==== */
 /* Selezionare 1, 2 o 3 e ricompilare. Sovrascrivibile con -DAES_TEST_SET=N. */
 #ifndef AES_TEST_SET
-#define AES_TEST_SET 3
+#define AES_TEST_SET 1
 #endif
 
 /* Set 1: chiave 128 bit, IV 128 bit, plaintext di quattro blocchi. */
